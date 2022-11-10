@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import DB.*;
 
-public class Autentikasi {
+public class Autentikasi extends Read {
     public static String getMd5(String input)
     {
         try {
