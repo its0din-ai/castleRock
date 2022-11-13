@@ -28,22 +28,28 @@ public class Read {
         }
     }
 
-    public void bacaDatabaseUsers(){
+    public String[] bacaUser(String username){
         // ntar bisa get data by Role / prodi
-        String getUser = "SELECT `username`, `nama_lengkap`, `progdi`, `role` FROM `users`";
+        String[] usr = new String[4];
+        String getUser = "SELECT * FROM `users` WHERE `username` = ?;";
         try(Connection connct = DriverManager.getConnection(Conn.DB_URL, Conn.USER, Conn.PASS);
-        Statement statement = connct.createStatement();
-        ResultSet hasilKueri = statement.executeQuery(getUser);){
-                while(hasilKueri.next()){
-                    System.out.println("Username = " + hasilKueri.getString("username") + "\nNama = " + hasilKueri.getString("nama_lengkap") + "\nProdi = " + hasilKueri.getString("progdi") + "\nRole = " + hasilKueri.getString("role") + "\n");
-                }
+        PreparedStatement statement = connct.prepareStatement(getUser);){
+            statement.setString(1, username);
+            ResultSet hasilKueri = statement.executeQuery();
+            while(hasilKueri.next()){
+                    usr[0] = hasilKueri.getString("username");
+                    usr[1] = hasilKueri.getString("nama_lengkap");
+                    usr[2] = hasilKueri.getString("progdi");
+                    usr[3] = hasilKueri.getString("role");
+            }
         }
         catch(SQLException e){
             e.printStackTrace();
         }
+        return usr;
     }
 
-    public String bacaDatabasePassword(String username){
+    public String bacaPassword(String username){
         String getUser = "SELECT `password` FROM `users` WHERE `username` = ?;";
         String pswd = "";
         try(Connection connct = DriverManager.getConnection(Conn.DB_URL, Conn.USER, Conn.PASS);

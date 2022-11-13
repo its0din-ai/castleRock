@@ -1,43 +1,80 @@
-import DB.*;
+// import DB.*;
 import Auth.*;
+import Views.*;
 
 import java.util.Scanner;
-import java.io.Console;
+// import java.io.Console;
 
 public class App {
-    public static String blankPassInput() {        
-        Console console = System.console();
-        // if (console == null) {
-        //     System.out.println("Maap, gaada console yg bisa dibuka");
-        //     System.exit(0);
-        // }
-        char[] passwordArray = console.readPassword("Password: ");
-        return new String(passwordArray);
-    }
+    
 
     public static void main(String[] args) throws Exception {
-        Read read = new Read();
+        // Read bacaUsr = new Read();
         Autentikasi authDev = new Autentikasi();
+        String[] users = authDev.Login();
         Scanner input = new Scanner(System.in);
+        String namaLengkap = users[1];
+        String prodi = users[2];
 
-        System.out.println("Selamat datang di CastleRock Library!");
-        System.out.println("Silahkan login terlebih dahulu");
-        System.out.print("Username: ");
-        String username = input.nextLine();
-        String pass = blankPassInput();
+        switch(users[3]){
+            case "admin":
+                Menu menuAdmin = new Menu();
+                Operation pilihan = new Operation();
 
-        if(authDev.authDevMode(username, pass)){
-            System.out.println("-------------------");
-            System.out.println("Selamat datang " + username);
-            System.out.println("-------------------");
-            read.bacaDatabaseBuku();
-            read.bacaDatabaseUsers();
+                Menu.clearConsole();
+                menuAdmin.menuAdmin(namaLengkap);
+                System.out.println("Masukkan pilihan anda: ");
+                String inputPilihan = "1";
+
+                switch(inputPilihan){
+                    case "1":
+                        Menu.clearConsole();
+                        pilihan.menuTambahUser(namaLengkap);
+                        break;
+                    case "2":
+                        Menu.clearConsole();
+                        pilihan.menuLihatUser();
+                        break;
+                    case "3":
+                        Menu.clearConsole();
+                        pilihan.menuTambahBuku();
+                        break;
+                    case "4":
+                        Menu.clearConsole();
+                        pilihan.menuLihatBuku();
+                        break;
+                    case "5":
+                        Menu.clearConsole();
+                        pilihan.menuPinjamBuku();
+                        break;
+                    case "6":
+                        Menu.clearConsole();
+                        pilihan.menuKembalikanBuku();
+                        break;
+                    case "7":
+                        Menu.clearConsole();
+                        pilihan.menuLogout();
+                        break;
+                    default:
+                        System.out.println("Pilihan tidak tersedia");
+                break;
+                }
+            case "staff":
+                Menu menuStaff = new Menu();
+                Menu.clearConsole();
+                menuStaff.menuStaff(namaLengkap, prodi);
+                break;
+            case "user":
+                Menu menuUser = new Menu();
+                Menu.clearConsole();
+                menuUser.menuUser(namaLengkap, prodi);
+                break;
+            default:
+                System.out.println("Pilihan tidak tersedia");
+                break;
         }
-        else{
-            System.out.println("-------------------");
-            System.out.println("Maap, elu siape ngab??");
-        }
-
         input.close();
+        
+
     }
 }
