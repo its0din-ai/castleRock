@@ -68,24 +68,32 @@ public class Read {
     }
 
     public void fetchUser(){
-        System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
-        System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |      ROLE     |%n");
-        System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
+        System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
+        System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         
         String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users`;";
         try(Connection connct = DriverManager.getConnection(Conn.DB_URL, Conn.USER, Conn.PASS);
         PreparedStatement statement = connct.prepareStatement(getUser);){
             ResultSet hasilKueri = statement.executeQuery();
             while(hasilKueri.next()){
-                String leftAlignFormat = "| %-4d | %-28s | %-34s | %-25s | %-13s |%n";
+                String leftAlignFormat = "| %-4d | %-28s | %-34s | %-25s | %-12s |%n";
                 
                 System.out.format(leftAlignFormat, hasilKueri.getInt("id"), hasilKueri.getString("username"), hasilKueri.getString("nama_lengkap"), hasilKueri.getString("progdi"), hasilKueri.getString("role"));
-                
-                System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
             }
         }
         catch(SQLException e){
             e.printStackTrace();
         }
+
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
     }
+
+
+
+
+
+
+    
 }
