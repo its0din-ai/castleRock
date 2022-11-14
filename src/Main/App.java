@@ -31,7 +31,7 @@ public class App {
     protected static void mainMenu(String[] users){
         switch(users[3]){
             case "admin":
-                Menu menuAdmin = new Menu();
+                Admin menuAdmin = new Admin();
                 Menu.clearConsole();
                 menuAdmin.menuAdmin(users[1]);
                 break;

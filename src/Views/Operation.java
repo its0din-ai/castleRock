@@ -2,7 +2,7 @@ package Views;
 
 // import java.util.Scanner;
 
-public class Operation extends Menu{
+public class Operation extends Admin{
     
 
     protected void tambah(){
