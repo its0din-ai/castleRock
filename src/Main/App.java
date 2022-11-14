@@ -14,17 +14,21 @@ public class App {
         users = authDev.Login();
     }
 
+    public void sleep(int detik){
+        try {
+            Thread.sleep(detik * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws Exception {
-        // Read bacaUsr = new Read();
-        // int coba = 3;
         login();
         mainMenu(users);
-
 
     }
 
     protected static void mainMenu(String[] users){
-
         switch(users[3]){
             case "admin":
                 Menu menuAdmin = new Menu();
@@ -42,9 +46,16 @@ public class App {
                 menuUser.menuUser(users[1], users[2]);
                 break;
             default:
-                System.out.println("Pilihan tidak tersedia");
+                System.out.println("Kamu ini siapa ngab? Hengker kh?");
                 break;
         }
     }
+
+
+
+
+
+
+
 
 }

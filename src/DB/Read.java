@@ -31,7 +31,7 @@ public class Read {
     public String[] bacaUser(String username){
         // ntar bisa get data by Role / prodi
         String[] usr = new String[4];
-        String getUser = "SELECT * FROM `users` WHERE `username` = ?;";
+        String getUser = "SELECT username, nama_lengkap, progdi, role FROM `users` WHERE `username` = ?;";
         try(Connection connct = DriverManager.getConnection(Conn.DB_URL, Conn.USER, Conn.PASS);
         PreparedStatement statement = connct.prepareStatement(getUser);){
             statement.setString(1, username);
@@ -65,5 +65,27 @@ public class Read {
         }
 
         return pswd;
+    }
+
+    public void fetchUser(){
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
+        System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |      ROLE     |%n");
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
+        
+        String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users`;";
+        try(Connection connct = DriverManager.getConnection(Conn.DB_URL, Conn.USER, Conn.PASS);
+        PreparedStatement statement = connct.prepareStatement(getUser);){
+            ResultSet hasilKueri = statement.executeQuery();
+            while(hasilKueri.next()){
+                String leftAlignFormat = "| %-4d | %-28s | %-34s | %-25s | %-13s |%n";
+                
+                System.out.format(leftAlignFormat, hasilKueri.getInt("id"), hasilKueri.getString("username"), hasilKueri.getString("nama_lengkap"), hasilKueri.getString("progdi"), hasilKueri.getString("role"));
+                
+                System.out.format("+------+------------------------------+------------------------------------+---------------------------+---------------+%n");
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }

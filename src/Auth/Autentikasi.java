@@ -56,22 +56,23 @@ public class Autentikasi extends Read {
         while(coba > 0){
             Menu.clearConsole();
             Menu.bannerAwal();
-            System.out.println("Percobaan login maksimum adalah " + coba + " kali");
-            System.out.println("Login");
 
+            System.out.println("Percobaan login maksimum adalah " + coba + " kali");
             System.out.print("Username: ");
             String username = usrnm.nextLine();
             String pass = passwordInput();
             
             if(authDevMode(username, pass)){
                 objUser = bacaUsr.bacaUser(username);
-                System.out.println("Login Berhasil");
+                System.out.println("Login Berhasil, anda masuk sebagai " + objUser[1]);
                 return objUser;
             }
             else{
                 coba--;
                 if(coba == 0){
-                    System.out.println("Login Gagal, Anda telah mencapai batas percobaan");
+                    System.out.println("\nLogin Gagal, Anda telah mencapai batas percobaan");
+                    System.out.println("Silahkan hubungi Admin untuk pembuatan akun\natau melaporkan perihal kesalahan pada Akun!\n");
+                    Menu.bannerLogout();
                     System.exit(0);
                 }
                 // System.out.println("Login Gagal, " + coba + " kali lagi");

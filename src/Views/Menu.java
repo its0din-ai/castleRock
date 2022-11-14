@@ -5,6 +5,8 @@ import Main.*;
 import java.io.IOException;
 import java.util.Scanner;
 
+import DB.Read;
+
 public class Menu extends App {
 
     public static void clearConsole() {
@@ -26,9 +28,17 @@ public class Menu extends App {
         System.out.println("===================================");
     }
 
+    public static void bannerLogout(){
+        System.out.println("===============================");
+        System.out.println("       Anda telah logout");
+        System.out.println("===============================");
+        System.out.println("    ver.0.0.1-dev encrypt0r");
+        System.out.println("-------------------------------");
+    }
+
     public void menuAdmin(String name){
         Scanner menu = new Scanner(System.in);
-        
+
         System.out.println("Anda Login Sebagai " + name + "\n");
         System.out.println("Menu Admin");
         System.out.println("1. Tambah User");
@@ -49,7 +59,7 @@ public class Menu extends App {
                 break;
             case "2":
                 Menu.clearConsole();
-                System.out.println("Menu Lihat User");
+                lihatUser();
                 break;
             case "3":
                 Menu.clearConsole();
@@ -69,14 +79,12 @@ public class Menu extends App {
                 break;
             case "7":
                 Menu.clearConsole();
-                System.out.println("===============================");
-                System.out.println("      Anda telah logout");
-                System.out.println("===============================");
-                System.out.println("    ver.0.0.1-dev encrypt0r");
-                System.out.println("-------------------------------");
+                Menu.bannerLogout();
                 System.exit(0);
             default:
                 System.out.println("Pilihan tidak tersedia");
+                super.sleep(1);
+                super.mainMenu(App.users);
         break;
         }
         
@@ -142,9 +150,18 @@ public class Menu extends App {
                 super.mainMenu(App.users);
                 break;
             default:
-                System.out.println("Pilihan tidak tersedia\nSilahkan Login kembali!");
+                System.out.println("Pilihan tidak tersedia !");
+                super.sleep(1);
+                Menu.clearConsole();
+                tambahUser();
         break;
         }
+    }
+
+    protected void lihatUser(){
+        Read fetch = new Read();
+
+        fetch.fetchUser();
 
     }
 
