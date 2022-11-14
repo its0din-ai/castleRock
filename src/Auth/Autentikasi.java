@@ -47,27 +47,38 @@ public class Autentikasi extends Read {
     }
 
     public String[] Login(){
-        Scanner input = new Scanner(System.in);
+        Scanner usrnm = new Scanner(System.in);
         Read bacaUsr = new Read();
-        String[] fail = new String[1];
+        // String[] fail = new String[1];
+        String[] objUser = new String[4];
+        int coba = 3;
         
-        Menu.clearConsole();
-        Menu.bannerAwal();
-        System.out.println("Login");
+        while(coba > 0){
+            Menu.clearConsole();
+            Menu.bannerAwal();
+            System.out.println("Percobaan login maksimum adalah " + coba + " kali");
+            System.out.println("Login");
 
-        System.out.print("Username: ");
-        String username = input.nextLine();
-        String pass = passwordInput();
-        input.close();
-        
-        if(authDevMode(username, pass)){
-            String[] objUser = bacaUsr.bacaUser(username);
-            System.out.println("Login Berhasil");
-            return objUser;
+            System.out.print("Username: ");
+            String username = usrnm.nextLine();
+            String pass = passwordInput();
+            
+            if(authDevMode(username, pass)){
+                objUser = bacaUsr.bacaUser(username);
+                System.out.println("Login Berhasil");
+                return objUser;
+            }
+            else{
+                coba--;
+                if(coba == 0){
+                    System.out.println("Login Gagal, Anda telah mencapai batas percobaan");
+                    System.exit(0);
+                }
+                // System.out.println("Login Gagal, " + coba + " kali lagi");
+            }
         }
-        else{
-            return fail;
-        }
+
+        return objUser;
     }
 
 
