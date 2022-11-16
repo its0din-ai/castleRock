@@ -12,13 +12,12 @@ public class Admin extends Menu {
 
         System.out.println("Anda Login Sebagai " + name + "\n");
         System.out.println("Menu Admin");
-        System.out.println("1. Tambah User");
-        System.out.println("2. Lihat User");
-        System.out.println("3. Tambah Buku");
-        System.out.println("4. Lihat Buku");
-        System.out.println("5. Pinjam Buku");
-        System.out.println("6. Kembalikan Buku");
-        System.out.println("7. Logout");
+        System.out.println("1. Manage User");
+        System.out.println("2. Manage Buku");
+        System.out.println("3. Lihat Buku");
+        System.out.println("4. Pinjam Buku");
+        System.out.println("5. Kembalikan Buku");
+        System.out.println("6. Logout");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
         String inputPilihan = menu.nextLine();
@@ -26,36 +25,31 @@ public class Admin extends Menu {
         switch(inputPilihan){
             case "1":
                 Menu.clearConsole();
-                menuTambahUsers();
+                manageUsers();
                 break;
             case "2":
+                System.out.println("Menu Manage Buku");
                 Menu.clearConsole();
-                lihatUser();
-                menuAdmin(name);
                 break;
             case "3":
                 Menu.clearConsole();
-                System.out.println("Menu Tambah Buku");
+                System.out.println("Menu Liat Katalog Buku");
                 break;
             case "4":
                 Menu.clearConsole();
-                System.out.println("Menu Lihat Buku");
+                System.out.println("Menu Pinjam Buku");
                 break;
             case "5":
                 Menu.clearConsole();
-                System.out.println("Menu Pinjam Buku");
-                break;
-            case "6":
-                Menu.clearConsole();
                 System.out.println("Menu Kembalikan Buku");
                 break;
-            case "7":
+            case "6":
                 Menu.clearConsole();
                 Menu.bannerLogout();
                 System.exit(0);
             default:
                 System.out.println("Pilihan tidak tersedia");
-                super.sleep(1);
+                sleep(1);
                 super.mainMenu(App.users);
         break;
         }
@@ -63,8 +57,13 @@ public class Admin extends Menu {
     }
 
 
-    protected void menuTambahUsers(){
-        Scanner tambah = new Scanner(System.in);
+    private void lihatUser(){
+        Read fetch = new Read();
+        fetch.fetchUser();
+    }
+
+    protected void manageUsers(){
+        Scanner inputan = new Scanner(System.in);
 
         String username, password, nama_lengkap, progdi, role;
 
@@ -76,7 +75,7 @@ public class Admin extends Menu {
         System.out.println("5. Kembali");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
-        String inputPilihan = tambah.nextLine();
+        String inputPilihan = inputan.nextLine();
         switch(inputPilihan){
             case "1":
                 Menu.clearConsole();
@@ -84,40 +83,54 @@ public class Admin extends Menu {
                 
                 System.out.println("Menu Tambah User");
                 System.out.println("Masukkan Username: ");
-                username = tambah.nextLine();
+                username = inputan.nextLine();
                 System.out.println("Masukkan Password: ");
-                password = tambah.nextLine();
+                password = inputan.nextLine();
                 System.out.println("Masukkan Nama Lengkap: ");
-                nama_lengkap = tambah.nextLine();
+                nama_lengkap = inputan.nextLine();
                 System.out.println("Masukkan Program Studi: ");
-                progdi = tambah.nextLine();
+                progdi = inputan.nextLine();
                 System.out.println("Masukkan Role: ");
-                role = tambah.nextLine();
+                role = inputan.nextLine();
 
                 tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
                 System.out.println("User " + username + " berhasil ditambahkan\n");
                 Menu.sleep(1.5);
                 Menu.clearConsole();
-                menuTambahUsers();
+                manageUsers();
                 break;
-
 
             case "2":
                 Menu.clearConsole();
-                System.out.println("Menu Lihat User");
+                // System.out.println("Menu Lihat User");
                 lihatUser();
-                menuTambahUsers();
+                System.out.println("\n=============================================================================================================");
+                manageUsers();
                 break;
-
 
             case "3":
                 Menu.clearConsole();
-                System.out.println("Menu Edit User");
-                break;
-            case "4":
+                System.out.println("Menu EDIT User");
+                
                 Menu.clearConsole();
-                System.out.println("Menu Hapus User");
+                manageUsers();
                 break;
+                
+            case "4":
+                Delete hapusById = new Delete();
+
+                Menu.clearConsole();
+                lihatUser();
+
+                System.out.println("\nMasukkan ID yang akan dihapus!");
+                String id = inputan.nextLine();
+                hapusById.deleteUsers(id);
+
+                sleep(2);
+                Menu.clearConsole();
+                manageUsers();
+                break;
+
             case "5":
                 Menu.clearConsole();
                 System.out.println("Kembali");
@@ -127,17 +140,14 @@ public class Admin extends Menu {
                 System.out.println("Pilihan tidak tersedia !");
                 super.sleep(1);
                 Menu.clearConsole();
-                menuTambahUsers();
+                manageUsers();
         break;
         }
 
     }
 
+    
 
-    protected void lihatUser(){
-        Read fetch = new Read();
-        fetch.fetchUser();
-    }
 
 
 

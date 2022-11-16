@@ -4,14 +4,13 @@ import Auth.*;
 import Views.*;
 
 public class App {
+
     // MAIN METHOD
     public static void main(String[] args) throws Exception {
         login();
         mainMenu(users);
 
     }
-
-
 
     // KODE TAMBAHAN
     protected static String[] users = new String[4];
@@ -29,12 +28,12 @@ public class App {
                 menuAdmin.menuAdmin(users[1]);
                 break;
             case "staff":
-                Menu menuStaff = new Menu();
+                Staff menuStaff = new Staff();
                 Menu.clearConsole();
                 menuStaff.menuStaff(users[1], users[2]);
                 break;
             case "user":
-                Menu menuUser = new Menu();
+                Users menuUser = new Users();
                 Menu.clearConsole();
                 menuUser.menuUser(users[1], users[2]);
                 break;

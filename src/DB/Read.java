@@ -72,6 +72,31 @@ public class Read extends Conn {
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
 
     }
+
+    public void fetchUserById(String id){
+        System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
+        System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
+        
+        String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users` WHERE id = ?;";
+        try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connct.prepareStatement(getUser);)
+        {
+            statement.setString(1, id);
+            ResultSet hasilKueri = statement.executeQuery();
+            while(hasilKueri.next()){
+                String leftAlignFormat = "| %-4d | %-28s | %-34s | %-25s | %-12s |%n";
+                
+                System.out.format(leftAlignFormat, hasilKueri.getInt("id"), hasilKueri.getString("username"), hasilKueri.getString("nama_lengkap"), hasilKueri.getString("progdi"), hasilKueri.getString("role"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
+
+    }
     
 
     // Method untuk membaca data buku
