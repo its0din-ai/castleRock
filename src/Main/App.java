@@ -1,31 +1,24 @@
 package Main;
 
-// import DB.*;
 import Auth.*;
 import Views.*;
 
-// import java.util.Scanner;
-// import java.io.Console;
-
 public class App {
-    protected static String[] users = new String[4];
-    public static void login() {
-        Autentikasi authDev = new Autentikasi();
-        users = authDev.Login();
-    }
-
-    public void sleep(int detik){
-        try {
-            Thread.sleep(detik * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
+    // MAIN METHOD
     public static void main(String[] args) throws Exception {
         login();
         mainMenu(users);
 
+    }
+
+
+
+    // KODE TAMBAHAN
+    protected static String[] users = new String[4];
+    
+    public static void login() {
+        Autentikasi authDev = new Autentikasi();
+        users = authDev.Login();
     }
 
     protected static void mainMenu(String[] users){
@@ -55,6 +48,15 @@ public class App {
 
 
 
+
+    // Method untuk sleep
+    public void sleep(int detik){
+        try {
+            Thread.sleep(detik * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

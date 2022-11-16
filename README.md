@@ -1,5 +1,9 @@
-## TEST PROJECT
-### Trial JDBC and create Authentication Module
+## CASTLEROCK LIBRARY
+### For Fun.
 
-This is a test project to try out JDBC and create an Authentication Module.<br>
-~enc
+Library Management written in Java and using JDBC to connect to MySQL database.
+
+Version History ::
+v0.1-dev  -  Authentication, Read users data.                                       ✅
+v0.2-dev  -  Add new user, Delete user, Update user. (Finish the CRUD Models)       🏗
+v0.X-dev  -  Add new book, Delete book, Update book.

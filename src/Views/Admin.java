@@ -58,7 +58,9 @@ public class Admin extends Menu {
                 super.mainMenu(App.users);
         break;
         }
+
     }
+
 
     protected void tambahUser(){
         Scanner tambah = new Scanner(System.in);
@@ -104,13 +106,13 @@ public class Admin extends Menu {
                 tambahUser();
         break;
         }
+
     }
+
 
     protected void lihatUser(){
         Read fetch = new Read();
-
         fetch.fetchUser();
-
     }
 
 
