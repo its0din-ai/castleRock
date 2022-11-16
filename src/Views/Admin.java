@@ -3,7 +3,7 @@ package Views;
 import Main.*;
 import java.util.Scanner;
 
-import DB.Read;
+import DB.*;
 
 public class Admin extends Menu {
     
@@ -26,11 +26,12 @@ public class Admin extends Menu {
         switch(inputPilihan){
             case "1":
                 Menu.clearConsole();
-                tambahUser();
+                menuTambahUsers();
                 break;
             case "2":
                 Menu.clearConsole();
                 lihatUser();
+                menuAdmin(name);
                 break;
             case "3":
                 Menu.clearConsole();
@@ -62,10 +63,10 @@ public class Admin extends Menu {
     }
 
 
-    protected void tambahUser(){
+    protected void menuTambahUsers(){
         Scanner tambah = new Scanner(System.in);
-        Operation ops = new Operation();
 
+        String username, password, nama_lengkap, progdi, role;
 
         System.out.println("Menu Tambah User");
         System.out.println("1. Tambah User");
@@ -79,13 +80,36 @@ public class Admin extends Menu {
         switch(inputPilihan){
             case "1":
                 Menu.clearConsole();
-                System.out.println("ISI ID USER & QUERY KE DB,\nSETELAH SUKSES BALIK KE MENU TAMBAH USER");
-                ops.tambah();
+                Create tambahUsr = new Create();
+                
+                System.out.println("Menu Tambah User");
+                System.out.println("Masukkan Username: ");
+                username = tambah.nextLine();
+                System.out.println("Masukkan Password: ");
+                password = tambah.nextLine();
+                System.out.println("Masukkan Nama Lengkap: ");
+                nama_lengkap = tambah.nextLine();
+                System.out.println("Masukkan Program Studi: ");
+                progdi = tambah.nextLine();
+                System.out.println("Masukkan Role: ");
+                role = tambah.nextLine();
+
+                tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
+                System.out.println("User " + username + " berhasil ditambahkan\n");
+                Menu.sleep(1.5);
+                Menu.clearConsole();
+                menuTambahUsers();
                 break;
+
+
             case "2":
                 Menu.clearConsole();
                 System.out.println("Menu Lihat User");
+                lihatUser();
+                menuTambahUsers();
                 break;
+
+
             case "3":
                 Menu.clearConsole();
                 System.out.println("Menu Edit User");
@@ -103,7 +127,7 @@ public class Admin extends Menu {
                 System.out.println("Pilihan tidak tersedia !");
                 super.sleep(1);
                 Menu.clearConsole();
-                tambahUser();
+                menuTambahUsers();
         break;
         }
 

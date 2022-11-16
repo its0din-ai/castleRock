@@ -45,19 +45,4 @@ public class App {
     }
 
 
-
-
-
-
-    // Method untuk sleep
-    public void sleep(int detik){
-        try {
-            Thread.sleep(detik * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
 }

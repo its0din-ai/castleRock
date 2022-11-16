@@ -18,6 +18,16 @@ public class Menu extends App {
         }
     }
 
+    // Method untuk sleep
+    public static void sleep(double rawDetik){
+        try {
+            int detik = (int) (rawDetik * 1000);
+            Thread.sleep(detik);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void bannerAwal(){
         System.out.println("===================================");
         System.out.println(" Selamat Datang di Citadel Library");

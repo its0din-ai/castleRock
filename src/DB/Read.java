@@ -15,7 +15,8 @@ public class Read extends Conn {
         String[] usr = new String[4];
         String getUser = "SELECT username, nama_lengkap, progdi, role FROM `users` WHERE `username` = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
-        PreparedStatement statement = connct.prepareStatement(getUser);){
+        PreparedStatement statement = connct.prepareStatement(getUser);)
+        {
             statement.setString(1, username);
             ResultSet hasilKueri = statement.executeQuery();
             while(hasilKueri.next()){

@@ -55,7 +55,7 @@ public class Autentikasi extends Read {
     }
 
     // Method untuk mengenkripsi password menggunakan algoritma MD5
-    private String getMd5(String input) {
+    public String getMd5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(input.getBytes());
