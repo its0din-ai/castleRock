@@ -57,15 +57,16 @@ public class Admin extends Menu {
     }
 
 
-    private void lihatUser(){
-        Read fetch = new Read();
-        fetch.fetchAllUser();
-    }
+    // private void lihatUser(){
+    //     Read fetch = new Read();
+    //     fetch.fetchAllUser();
+    // }
 
     protected void manageUsers(){
         Scanner inputan = new Scanner(System.in);
+        Read fetch = new Read();
 
-        String username, password, nama_lengkap, progdi, role;
+        String id, username, password, nama_lengkap, progdi, role;
 
         System.out.println("Menu Tambah User");
         System.out.println("1. Tambah User");
@@ -103,7 +104,8 @@ public class Admin extends Menu {
             case "2":
                 Menu.clearConsole();
                 // System.out.println("Menu Lihat User");
-                lihatUser();
+                // NANTI BISA DI SORT BY PARAMETER
+                fetch.fetchAllUser();
                 System.out.println("\n=============================================================================================================");
                 manageUsers();
                 break;
@@ -111,23 +113,59 @@ public class Admin extends Menu {
             case "3":
                 Menu.clearConsole();
                 System.out.println("Menu EDIT User");
-                Read cobRead = new Read();
+                Update editUser = new Update();
 
-                cobRead.fetchUserBy("role", "user");
-                
+                fetch.fetchAllUser();
+
+                System.out.println("Masukkan ID User: ");
+                id = inputan.nextLine();
+                fetch.fetchUserBy("id", id);
+
+                System.out.println("Data apa yang akan di Update: ");
+                System.out.println("1. Nama Lengkap\n2. Program Studi\n3. Role\n4. Password");
+                String pilihData = inputan.nextLine();
+                switch(pilihData){
+                    case "1":
+                        System.out.println("\nMasukkan Nama Lengkap Baru: ");
+                        String nama_lengkap_baru = inputan.nextLine();
+                        editUser.updateNama(id, nama_lengkap_baru);
+                        break;
+                    case "2":
+                        System.out.println("\nMasukkan Program Studi Baru: ");
+                        String progdi_baru = inputan.nextLine();
+                        editUser.updateProgdi(id, progdi_baru);
+                        break;
+                    case "3":
+                        System.out.println("\nMasukkan Role Baru: ");
+                        String role_baru = inputan.nextLine();
+                        editUser.updateRole(id, role_baru);
+                        break;
+                    case "4":
+                        System.out.println("\nMasukkan Password Baru: ");
+                        String password_baru = inputan.nextLine();
+                        editUser.updatePassword(id, password_baru);
+                        break;
+                    default:
+                        System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
+                        super.sleep(1);
+                        Menu.clearConsole();
+                        manageUsers();
+                }
+
+                System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
                 sleep(5);
-                // Menu.clearConsole();
-                // manageUsers();
+                Menu.clearConsole();
+                manageUsers();
                 break;
                 
             case "4":
                 Delete hapusById = new Delete();
 
                 Menu.clearConsole();
-                lihatUser();
+                fetch.fetchAllUser();
 
                 System.out.println("\nMasukkan ID yang akan dihapus!");
-                String id = inputan.nextLine();
+                id = inputan.nextLine();
                 hapusById.deleteUsers(id);
 
                 sleep(2);

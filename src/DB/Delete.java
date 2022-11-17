@@ -6,6 +6,7 @@ import java.lang.String;
 
 
 public class Delete extends Conn {
+    
     String DB_URL = getConfig()[0];
     String USER = getConfig()[1];
     String PASS = getConfig()[2];
@@ -40,6 +41,8 @@ public class Delete extends Conn {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
+
+                    break;
     
                 case "n":
                     System.out.println("User Tidak jadi dihapus");
@@ -59,7 +62,7 @@ public class Delete extends Conn {
                     } catch (SQLException e) {
                         e.printStackTrace();
                 }
-                    
+                    break;
             }
         }
 
