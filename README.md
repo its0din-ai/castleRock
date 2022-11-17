@@ -11,8 +11,8 @@ Version History ::
 - v0.1-dev      -  Authentication, Read users data.                                       ✅
   
 - v0.2-dev      -  Add new user, Delete user, Update user. (Finish the CRUD Models)       ✅
-- v0.2.1-dev    -  DB INSERT Done
-- v0.2.2-dev    -  DB DELETE Done
-- v0.2.3-dev    -  DB UPDATE Done
+  - v0.2.1-dev    -  DB INSERT Done
+  - v0.2.2-dev    -  DB DELETE Done
+  - v0.2.3-dev    -  DB UPDATE Done
   
 - v0.3-dev      -  Add new book, Delete book, Update book.
