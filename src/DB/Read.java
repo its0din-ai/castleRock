@@ -12,8 +12,8 @@ public class Read extends Conn {
     // Method untuk membaca data user
     public String[] bacaUser(String username) {
         // ntar bisa get data by Role / prodi
-        String[] usr = new String[4];
-        String getUser = "SELECT username, nama_lengkap, progdi, role FROM `users` WHERE `username` = ?;";
+        String[] usr = new String[5];
+        String getUser = "SELECT id, username, nama_lengkap, progdi, role FROM `users` WHERE `username` = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
         PreparedStatement statement = connct.prepareStatement(getUser);)
         {
@@ -24,6 +24,7 @@ public class Read extends Conn {
                     usr[1] = hasilKueri.getString("nama_lengkap");
                     usr[2] = hasilKueri.getString("progdi");
                     usr[3] = hasilKueri.getString("role");
+                    usr[4] = hasilKueri.getString("id");
             }
         } catch(SQLException e){
             e.printStackTrace();

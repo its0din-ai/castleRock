@@ -13,7 +13,7 @@ public class App {
     }
 
     // KODE TAMBAHAN
-    protected static String[] users = new String[4];
+    protected static String[] users = new String[5];
     
     public static void login() {
         Autentikasi authDev = new Autentikasi();
@@ -35,7 +35,7 @@ public class App {
             case "user":
                 Users menuUser = new Users();
                 Menu.clearConsole();
-                menuUser.menuUser(users[1], users[2]);
+                menuUser.menuUser(users[4], users[0], users[1], users[2]);
                 break;
             default:
                 System.out.println("Kamu ini siapa ngab? Hengker kh?");

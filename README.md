@@ -16,6 +16,7 @@ Version History ::
   - v0.2.3-dev    -  DB UPDATE Done
   
 - v0.3-dev      -  Get Userlist by parameter(Prodi, Role)    ✅
+- v0.4-dev      -  User can Update password with last password for Verification    ✅
 
 
 - v0.X-dev      -  Add new book, Delete book, Update book.
