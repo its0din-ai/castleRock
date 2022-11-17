@@ -50,7 +50,7 @@ public class Read extends Conn {
         return pswd;
     }
 
-    public void fetchUser(){
+    public void fetchAllUser(){
         System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
@@ -73,17 +73,18 @@ public class Read extends Conn {
 
     }
 
-    public void fetchUserById(String id){
+    public void fetchUserBy(String param, String value){
         System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         
-        String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users` WHERE id = ?;";
+        String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users` WHERE " + param + " = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(getUser);)
         {
-            statement.setString(1, id);
+            statement.setString(1, value);
+            
             ResultSet hasilKueri = statement.executeQuery();
             while(hasilKueri.next()){
                 String leftAlignFormat = "| %-4d | %-28s | %-34s | %-25s | %-12s |%n";

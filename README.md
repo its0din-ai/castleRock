@@ -14,3 +14,5 @@ Version History ::
 - v0.2.2-dev    -  DB DELETE Done
 - v0.2.3-dev    -  DB UPDATE Unstarted
 - v0.X-dev      -  Add new book, Delete book, Update book.
+
+<!-- FETCH USR BY ? -->

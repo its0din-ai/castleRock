@@ -15,7 +15,7 @@ public class Delete extends Conn {
         Read byId = new Read();
         Scanner validasi = new Scanner(System.in);
 
-        byId.fetchUserById(id);
+        byId.fetchUserBy("id", id);
 
         if(id.equals("0")){
             System.out.println("ID 0 Immortal bang, gabisa dihapus!!");

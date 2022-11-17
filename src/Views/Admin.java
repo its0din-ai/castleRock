@@ -59,7 +59,7 @@ public class Admin extends Menu {
 
     private void lihatUser(){
         Read fetch = new Read();
-        fetch.fetchUser();
+        fetch.fetchAllUser();
     }
 
     protected void manageUsers(){
@@ -111,9 +111,13 @@ public class Admin extends Menu {
             case "3":
                 Menu.clearConsole();
                 System.out.println("Menu EDIT User");
+                Read cobRead = new Read();
+
+                cobRead.fetchUserBy("role", "user");
                 
-                Menu.clearConsole();
-                manageUsers();
+                sleep(5);
+                // Menu.clearConsole();
+                // manageUsers();
                 break;
                 
             case "4":
