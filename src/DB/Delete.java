@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.Scanner;
 import java.lang.String;
 
-
 public class Delete extends Conn {
     
     String DB_URL = getConfig()[0];

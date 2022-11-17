@@ -10,14 +10,9 @@ public class Admin extends Menu {
     public void menuAdmin(String name){
         Scanner menu = new Scanner(System.in);
 
-        System.out.println("Anda Login Sebagai " + name + "\n");
+        System.out.println("Anda Login Sebagai " + name);
         System.out.println("Menu Admin");
-        System.out.println("1. Manage User");
-        System.out.println("2. Manage Buku");
-        System.out.println("3. Lihat Buku");
-        System.out.println("4. Pinjam Buku");
-        System.out.println("5. Kembalikan Buku");
-        System.out.println("6. Logout");
+        System.out.println("1. Manage User\n2. Manage Buku\n3. Lihat Buku\n4. Pinjam Buku\n5. Kembalikan Buku\n6. Logout");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
         String inputPilihan = menu.nextLine();
@@ -57,11 +52,6 @@ public class Admin extends Menu {
     }
 
 
-    // private void lihatUser(){
-    //     Read fetch = new Read();
-    //     fetch.fetchAllUser();
-    // }
-
     protected void manageUsers(){
         Scanner inputan = new Scanner(System.in);
         Read fetch = new Read();
@@ -69,11 +59,7 @@ public class Admin extends Menu {
         String id, username, password, nama_lengkap, progdi, role;
 
         System.out.println("Menu Tambah User");
-        System.out.println("1. Tambah User");
-        System.out.println("2. Lihat User");
-        System.out.println("3. Edit User");
-        System.out.println("4. Hapus User");
-        System.out.println("5. Kembali");
+        System.out.println("1. Tambah User\n2. Lihat User\n3. Edit User\n4. Hapus User\n5. Kembali");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
         String inputPilihan = inputan.nextLine();
@@ -205,11 +191,13 @@ public class Admin extends Menu {
                 System.out.println("Kembali");
                 super.mainMenu(App.users);
                 break;
+
             default:
                 System.out.println("Pilihan tidak tersedia !");
                 super.sleep(1);
                 Menu.clearConsole();
                 manageUsers();
+
         break;
         }
 

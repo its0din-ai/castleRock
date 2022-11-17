@@ -7,11 +7,7 @@ public class Users {
 
         System.out.println("Anda Login Sebagai " + name);
         System.out.println("Program Studi " + prodi + "\n");
-        System.out.println("Menu Mahasiswa");
-        System.out.println("1. Lihat Buku");
-        System.out.println("2. Pinjam Buku");
-        System.out.println("3. Kembalikan Buku");
-        System.out.println("4. Logout");
+        System.out.println("Menu Mahasiswa\n1. Lihat Buku\n2. Pinjam Buku\n3. Kembalikan Buku\n4. Pengaturan\n5. Logout");
         // USER BISA GANTI PASSWORD? DENGAN VERIF PASSWORD SEKARANG
 
     }
