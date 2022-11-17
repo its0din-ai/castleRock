@@ -105,9 +105,36 @@ public class Admin extends Menu {
                 Menu.clearConsole();
                 // System.out.println("Menu Lihat User");
                 // NANTI BISA DI SORT BY PARAMETER
-                fetch.fetchAllUser();
-                System.out.println("\n=============================================================================================================");
-                manageUsers();
+                System.out.println("DAFTAR PENGGUNA PERPUSTAKAAN");
+                System.out.println("1. Ambil Semua Data\n2. Ambil Data sesuai Prodi\n3. Ambil Data sesuai Role");
+                System.out.println("Masukkan pilihan anda: ");
+                String pilihanData = inputan.nextLine();
+
+                switch(pilihanData){
+                    case "1":
+                        Menu.clearConsole();
+                        fetch.fetchAllUser();
+                        manageUsers();
+                        break;
+                    case "2":
+                        Menu.clearConsole();
+                        System.out.println("Masukkan Nama Prodi");
+                        String valueQuery = inputan.nextLine();
+                        fetch.fetchUserBy("progdi", valueQuery);
+                        manageUsers();
+                        break;
+                    case "3":
+                        Menu.clearConsole();
+                        System.out.println("Masukkan Nama Role");
+                        valueQuery = inputan.nextLine();
+                        fetch.fetchUserBy("role", valueQuery);
+                        manageUsers();
+                        break;
+                    default:
+                        Menu.clearConsole();
+                        manageUsers();
+                        break;
+                }
                 break;
 
             case "3":

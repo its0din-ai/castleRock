@@ -51,7 +51,6 @@ public class Read extends Conn {
     }
 
     public void fetchAllUser(){
-        System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
@@ -74,7 +73,6 @@ public class Read extends Conn {
     }
 
     public void fetchUserBy(String param, String value){
-        System.out.format("                                             DAFTAR ANGGOTA CITADEL LIBRARY                                            %n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
