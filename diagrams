@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-14T14:13:39.744Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="_kAeK5ONG5_5443PlYu-" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-02T23:51:10.744Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="orSKU69L5-429kuXvGMJ" version="20.5.3" type="github">
   <diagram id="D1flb3gvoJ-bXbMKI72J" name="Page-1">
-    <mxGraphModel dx="2151" dy="1730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1928" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -69,6 +69,9 @@
         <mxCell id="cXTEusYGsrdraCs6ImvB-7" value="TAMBAH USER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6666;" parent="1" vertex="1">
           <mxGeometry x="15" y="70" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="YEOBd8CMwWzAq9o0Jhnp-5" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;endArrow=open;startSize=14;endSize=14;sourcePerimeterSpacing=8;targetPerimeterSpacing=8;" edge="1" parent="1" source="cXTEusYGsrdraCs6ImvB-8" target="YEOBd8CMwWzAq9o0Jhnp-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="cXTEusYGsrdraCs6ImvB-8" value="MANAGE USER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6666;" parent="1" vertex="1">
           <mxGeometry x="155" y="70" width="120" height="60" as="geometry" />
         </mxCell>
@@ -108,8 +111,11 @@
         <mxCell id="cXTEusYGsrdraCs6ImvB-27" value="per kotak = 1 Modul" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-90" y="40" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="w6-DTKb10Lti8ksz7k9C-1" value="Ntar cuman ada 4 Menu :&lt;br&gt;&amp;gt;&amp;gt; Manage User (CRUD)&lt;br&gt;&amp;gt;&amp;gt; Manage Buku (CRUD)&lt;br&gt;&amp;gt;&amp;gt; Lihat Katalog -&amp;gt; Pinjam&lt;br&gt;&amp;gt;&amp;gt; Kembalikan Buku dari inventory" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="165" width="210" height="90" as="geometry" />
+        <mxCell id="w6-DTKb10Lti8ksz7k9C-1" value="Ntar cuman ada 4 Menu :&lt;br&gt;&amp;gt;&amp;gt; Manage User (CRUD)&lt;br&gt;&amp;gt;&amp;gt; Manage Buku (CRUD)&lt;br&gt;&amp;gt;&amp;gt; Lihat Katalog -&amp;gt; Pinjam&lt;br&gt;&amp;gt;&amp;gt; Kembalikan Buku dari inventory" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="250" y="290" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YEOBd8CMwWzAq9o0Jhnp-1" value="CRUD DONE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6666;" vertex="1" parent="1">
+          <mxGeometry x="155" y="180" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
