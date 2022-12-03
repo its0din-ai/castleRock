@@ -71,20 +71,29 @@ public class Admin extends Menu {
                 System.out.println("Menu Tambah User");
                 System.out.println("Masukkan Username: ");
                 username = inputan.nextLine();
-                System.out.println("Masukkan Password: ");
-                password = inputan.nextLine();
-                System.out.println("Masukkan Nama Lengkap: ");
-                nama_lengkap = inputan.nextLine();
-                System.out.println("Masukkan Program Studi: ");
-                progdi = inputan.nextLine();
-                System.out.println("Masukkan Role: ");
-                role = inputan.nextLine();
+                String duplikat = fetch.returnUserBy("username", username);
+                if(duplikat == null){
+                    System.out.println("Masukkan Password: ");
+                    password = inputan.nextLine();
+                    System.out.println("Masukkan Nama Lengkap: ");
+                    nama_lengkap = inputan.nextLine();
+                    System.out.println("Masukkan Program Studi: ");
+                    progdi = inputan.nextLine();
+                    System.out.println("Masukkan Role: ");
+                    role = inputan.nextLine();
+                    tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
+                    System.out.println("User " + username + " berhasil ditambahkan\n");
+                    sleep(1);
+                    Menu.clearConsole();
+                    manageUsers();
+                }
+                else if(duplikat != null){
+                    System.out.println("Username sudah ada");
+                    sleep(1);
+                    Menu.clearConsole();
+                    manageUsers();
+                }
 
-                tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
-                System.out.println("User " + username + " berhasil ditambahkan\n");
-                Menu.sleep(1.5);
-                Menu.clearConsole();
-                manageUsers();
                 break;
 
             case "2":

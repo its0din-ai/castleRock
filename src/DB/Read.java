@@ -98,6 +98,26 @@ public class Read extends Conn {
 
     }
     
+    public String returnUserBy(String param, String value){
+        String result;
+        
+        String getUser = "SELECT id, username, nama_lengkap, progdi, role  FROM `users` WHERE " + param + " = ?;";
+        try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connct.prepareStatement(getUser);)
+        {
+            statement.setString(1, value);
+            
+            ResultSet hasilKueri = statement.executeQuery();
+            while(hasilKueri.next()){
+                result = hasilKueri.getString(param);
+                return result;
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 
     // Method untuk membaca data buku
     void sisaBuku(int jumlah, int dipinjam){
