@@ -119,26 +119,28 @@ public class Read extends Conn {
     }
     
 
-    // Method untuk membaca data buku
-    void sisaBuku(int jumlah, int dipinjam){
-        int sisa = jumlah - dipinjam;
-        System.out.println("Sisa buku: " + sisa + "\n");
-    }
-
     public void bacaDatabaseBuku(){
         String getKatalog = "SELECT * FROM katalog";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
         Statement statement = connct.createStatement();
         ResultSet hasilKueri = statement.executeQuery(getKatalog);){
                 while(hasilKueri.next()){
-                    System.out.println("Judul Buku = " + hasilKueri.getString("judul_buku") + "\nPengarang = " + hasilKueri.getString("nama_pengarang") + "\nTahun Terbit = " + hasilKueri.getString("tahun_terbit") + "\nSedang dipinjam = " + hasilKueri.getString("dipinjam"));
+                    
+                    int tersedia = hasilKueri.getInt("max_buku") - hasilKueri.getInt("dipinjam");
 
-                    int jml = hasilKueri.getInt("jumlah_buku");
-                    int dipinjam = hasilKueri.getInt("dipinjam");
-                    sisaBuku(jml, dipinjam);
-
+                    System.out.println("-----------------------------------------------------------------------------------------------------------------");
+                    System.out.println("[*] ID Buku              :: " + hasilKueri.getInt("id"));
+                    System.out.println("[*] Kategori             :: " + hasilKueri.getString("kategori"));
+                    System.out.println("[*] Judul Buku           :: " + hasilKueri.getString("judul_buku"));
+                    System.out.println("[*] Bahasa               :: " + hasilKueri.getString("bahasa"));
+                    System.out.println("[*] Pengarang Buku       :: " + hasilKueri.getString("nama_pengarang"));
+                    System.out.println("[*] Tahun Terbit Buku    :: " + hasilKueri.getInt("tahun_terbit"));
+                    System.out.println("[*] Jumlah Tersedia      :: " + tersedia + " Buku");
+                    
+                    
                 }
-        }
+                System.out.println("-----------------------------------------------------------------------------------------------------------------");
+            }
         catch(SQLException e){
             e.printStackTrace();
         }

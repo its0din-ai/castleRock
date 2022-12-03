@@ -18,6 +18,6 @@ Version History ::
 - v0.3-dev      -  Get Userlist by parameter(Prodi, Role)    ✅
 - v0.4-dev      -  User can Update password with last password for Verification    ✅
 - v0.5-dev      -  Add duplicate username validation on AddUser function    ✅
-
+- v0.6-dev      -  Create, and Read Book Data    ✅
 
 - v0.X-dev      -  Add new book, Delete book, Update book.

@@ -9,6 +9,7 @@ public class Admin extends Menu {
     
     public void menuAdmin(String name){
         Scanner menu = new Scanner(System.in);
+        Read baca = new Read();
 
         System.out.println("Anda Login Sebagai " + name);
         System.out.println("Menu Admin");
@@ -25,10 +26,12 @@ public class Admin extends Menu {
             case "2":
                 System.out.println("Menu Manage Buku");
                 Menu.clearConsole();
+                manageBuku();
                 break;
             case "3":
-                Menu.clearConsole();
                 System.out.println("Menu Liat Katalog Buku");
+                Menu.clearConsole();
+                baca.bacaDatabaseBuku();
                 break;
             case "4":
                 Menu.clearConsole();
@@ -50,7 +53,6 @@ public class Admin extends Menu {
         }
 
     }
-
 
     protected void manageUsers(){
         Scanner inputan = new Scanner(System.in);
@@ -193,6 +195,161 @@ public class Admin extends Menu {
                 sleep(2);
                 Menu.clearConsole();
                 manageUsers();
+                break;
+
+            case "5":
+                Menu.clearConsole();
+                System.out.println("Kembali");
+                super.mainMenu(App.users);
+                break;
+
+            default:
+                System.out.println("Pilihan tidak tersedia !");
+                super.sleep(1);
+                Menu.clearConsole();
+                manageUsers();
+
+        break;
+        }
+
+    }
+    
+    protected void manageBuku(){
+        Scanner inputan = new Scanner(System.in);
+        // Read fetch = new Read();
+
+        String id, judul, bahasa, pengarang;
+        int tahun, maxBuku, sisaBuku;
+
+        System.out.println("Menu Manage Buku");
+        System.out.println("1. Tambah Buku\n2. Lihat Buku\n3. Edit Buku\n4. Hapus Buku\n5. Kembali");
+        System.out.println("===================================");
+        System.out.println("Masukkan pilihan anda: ");
+        String inputPilihan = inputan.nextLine();
+        switch(inputPilihan){
+            case "1":
+                Menu.clearConsole();
+                Create tambahBuku = new Create();
+                
+                System.out.println("Menu Tambah Buku");
+                System.out.println("Masukkan Judul Buku: ");
+                judul = inputan.nextLine();
+                System.out.println("Masukkan Bahasa Buku: ");
+                bahasa = inputan.nextLine();
+                System.out.println("Masukkan Nama Pengarang: ");
+                pengarang = inputan.nextLine();
+                System.out.println("Masukkan Tahun Terbit: ");
+                tahun = inputan.nextInt();
+                System.out.println("Masukkan Jumlah Buku: ");
+                maxBuku = inputan.nextInt();
+                tambahBuku.tambahBuku(judul, bahasa, pengarang, tahun, maxBuku);
+                System.out.println("Buku " + judul + " berhasil ditambahkan\n");
+                sisaBuku = maxBuku - 2;
+                System.out.println("[DEBUG] Sisa Buku :: " + sisaBuku);
+                sleep(3);
+                Menu.clearConsole();
+                manageUsers();
+                
+
+                break;
+
+            case "2":
+                // Menu.clearConsole();
+                // // System.out.println("Menu Lihat User");
+                // // NANTI BISA DI SORT BY PARAMETER
+                // System.out.println("DAFTAR PENGGUNA PERPUSTAKAAN");
+                // System.out.println("1. Ambil Semua Data\n2. Ambil Data sesuai Prodi\n3. Ambil Data sesuai Role");
+                // System.out.println("Masukkan pilihan anda: ");
+                // String pilihanData = inputan.nextLine();
+
+                // switch(pilihanData){
+                //     case "1":
+                //         Menu.clearConsole();
+                //         fetch.fetchAllUser();
+                //         manageUsers();
+                //         break;
+                //     case "2":
+                //         Menu.clearConsole();
+                //         System.out.println("Masukkan Nama Prodi");
+                //         String valueQuery = inputan.nextLine();
+                //         fetch.fetchUserBy("progdi", valueQuery);
+                //         manageUsers();
+                //         break;
+                //     case "3":
+                //         Menu.clearConsole();
+                //         System.out.println("Masukkan Nama Role");
+                //         valueQuery = inputan.nextLine();
+                //         fetch.fetchUserBy("role", valueQuery);
+                //         manageUsers();
+                //         break;
+                //     default:
+                //         Menu.clearConsole();
+                //         manageUsers();
+                //         break;
+                // }
+                break;
+
+            case "3":
+                // Menu.clearConsole();
+                // System.out.println("Menu EDIT User");
+                // Update editUser = new Update();
+
+                // fetch.fetchAllUser();
+
+                // System.out.println("Masukkan ID User: ");
+                // id = inputan.nextLine();
+                // fetch.fetchUserBy("id", id);
+
+                // System.out.println("Data apa yang akan di Update: ");
+                // System.out.println("1. Nama Lengkap\n2. Program Studi\n3. Role\n4. Password");
+                // String pilihData = inputan.nextLine();
+                // switch(pilihData){
+                //     case "1":
+                //         System.out.println("\nMasukkan Nama Lengkap Baru: ");
+                //         String nama_lengkap_baru = inputan.nextLine();
+                //         editUser.updateNama(id, nama_lengkap_baru);
+                //         break;
+                //     case "2":
+                //         System.out.println("\nMasukkan Program Studi Baru: ");
+                //         String progdi_baru = inputan.nextLine();
+                //         editUser.updateProgdi(id, progdi_baru);
+                //         break;
+                //     case "3":
+                //         System.out.println("\nMasukkan Role Baru: ");
+                //         String role_baru = inputan.nextLine();
+                //         editUser.updateRole(id, role_baru);
+                //         break;
+                //     case "4":
+                //         System.out.println("\nMasukkan Password Baru: ");
+                //         String password_baru = inputan.nextLine();
+                //         editUser.updatePassword(id, password_baru);
+                //         break;
+                //     default:
+                //         System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
+                //         super.sleep(1);
+                //         Menu.clearConsole();
+                //         manageUsers();
+                // }
+
+                // System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
+                // sleep(5);
+                // Menu.clearConsole();
+                // manageUsers();
+                break;
+                
+            case "4":
+                // Delete hapusById = new Delete();
+
+                // Menu.clearConsole();
+                // fetch.fetchAllUser();
+
+                // System.out.println("\nMasukkan ID yang akan dihapus!");
+                // id = inputan.nextLine();
+                // hapusById.deleteUsers(id);
+
+                // sleep(2);
+                // Menu.clearConsole();
+                // manageUsers();
                 break;
 
             case "5":
