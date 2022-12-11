@@ -112,7 +112,6 @@ public class Admin extends Menu {
                     case "1":
                         Menu.clearConsole();
                         fetch.fetchAllUser();
-                        // prnt.printUser();
                         manageUsers();
                         break;
                     case "2":
@@ -154,18 +153,50 @@ public class Admin extends Menu {
                     case "1":
                         System.out.println("\nMasukkan Nama Lengkap Baru: ");
                         String nama_lengkap_baru = inputan.nextLine();
-                        editUser.updateNama(id, nama_lengkap_baru);
+                        editUser.updateUser("nama_lengkap", id, nama_lengkap_baru);
+
+                        System.out.println("Nama Lengkap berhasil diubah");
+                        fetch.fetchUserBy("id", id);
                         break;
+
+
                     case "2":
                         System.out.println("\nMasukkan Program Studi Baru: ");
                         String progdi_baru = inputan.nextLine();
-                        editUser.updateProgdi(id, progdi_baru);
+                        editUser.updateUser("progdi", id, progdi_baru);
+
+                        System.out.println("Program Studi berhasil diubah");
+                        fetch.fetchUserBy("id", id);
                         break;
+
+
                     case "3":
-                        System.out.println("\nMasukkan Role Baru: ");
-                        String role_baru = inputan.nextLine();
-                        editUser.updateRole(id, role_baru);
+                        System.out.println("\nPilih Role: \n1. Admin\n2. Staff\n3. User");
+                        String pilihanRole = inputan.nextLine();
+                        switch(pilihanRole){
+                            case "1":
+                                editUser.updateUser("role", id, "admin");
+                                System.out.println("Role User berhasil diubah");
+                                fetch.fetchUserBy("id", id);
+                                break;
+                            case "2":
+                                editUser.updateUser("role", id, "staff");
+                                System.out.println("Role User berhasil diubah");
+                                fetch.fetchUserBy("id", id);
+                                break;
+                            case "3":
+                                editUser.updateUser("role", id, "user");
+                                System.out.println("Role User berhasil diubah");
+                                fetch.fetchUserBy("id", id);
+                                break;
+                            default:
+                                System.out.println("Salah statement boss!");
+                                System.out.println("Role User GAGAL diubah");
+                                break;
+                        }
                         break;
+
+
                     case "4":
                         System.out.println("\nMasukkan Password Baru: ");
                         String password_baru = inputan.nextLine();
@@ -254,7 +285,7 @@ public class Admin extends Menu {
                 System.out.println("[DEBUG] Sisa Buku :: " + sisaBuku);
                 sleep(3);
                 Menu.clearConsole();
-                manageUsers();
+                manageBuku();
                 
 
                 break;
@@ -262,54 +293,60 @@ public class Admin extends Menu {
             case "2":
                 Menu.clearConsole();
                 baca.bacaDatabaseBuku();
+                manageBuku();
                 break;
 
             case "3":
-                // Menu.clearConsole();
-                // System.out.println("Menu EDIT User");
-                // Update editUser = new Update();
+                Menu.clearConsole();
+                System.out.println("Menu EDIT Buku");
+                Update editBuku = new Update();
 
-                // fetch.fetchAllUser();
+                baca.bacaDatabaseBuku();
 
-                // System.out.println("Masukkan ID User: ");
-                // id = inputan.nextLine();
-                // fetch.fetchUserBy("id", id);
+                System.out.println("Masukkan ID Buku: ");
+                id = inputan.nextLine();
+                baca.returnBukuBy("id", id);
 
-                // System.out.println("Data apa yang akan di Update: ");
-                // System.out.println("1. Nama Lengkap\n2. Program Studi\n3. Role\n4. Password");
-                // String pilihData = inputan.nextLine();
-                // switch(pilihData){
-                //     case "1":
-                //         System.out.println("\nMasukkan Nama Lengkap Baru: ");
-                //         String nama_lengkap_baru = inputan.nextLine();
-                //         editUser.updateNama(id, nama_lengkap_baru);
-                //         break;
-                //     case "2":
-                //         System.out.println("\nMasukkan Program Studi Baru: ");
-                //         String progdi_baru = inputan.nextLine();
-                //         editUser.updateProgdi(id, progdi_baru);
-                //         break;
-                //     case "3":
-                //         System.out.println("\nMasukkan Role Baru: ");
-                //         String role_baru = inputan.nextLine();
-                //         editUser.updateRole(id, role_baru);
-                //         break;
-                //     case "4":
-                //         System.out.println("\nMasukkan Password Baru: ");
-                //         String password_baru = inputan.nextLine();
-                //         editUser.updatePassword(id, password_baru);
-                //         break;
-                //     default:
-                //         System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
-                //         super.sleep(1);
-                //         Menu.clearConsole();
-                //         manageUsers();
-                // }
+                System.out.println("Data apa yang akan di Update: ");
+                System.out.println("1. Judul Buku\n2. Kategori\n3. Bahasa\n4. Nama Pengarang\n5. Tahun Terbit\n6. Jumlah Maks Buku");
+                String pilihData = inputan.nextLine();
+                switch(pilihData){
+                    case "1":
+                        System.out.println("\nMasukkan Judul Baru: ");
+                        String judul_baru = inputan.nextLine();
+                        editBuku.updateBuku("judul_buku", id, judul_baru);
+                        System.out.println("Judul buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
+                    case "2":
+                        System.out.println("\nMasukkan Kategori Baru: ");
+                        String kategori_baru = inputan.nextLine();
+                        editBuku.updateBuku("kategori", id, kategori_baru);
+                        System.out.println("Kategori buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
+                    // case "3":
+                    //     System.out.println("\nMasukkan Role Baru: ");
+                    //     String role_baru = inputan.nextLine();
+                    //     editBuku.updateRole(id, role_baru);
+                    //     break;
+                    // case "4":
+                    //     System.out.println("\nMasukkan Password Baru: ");
+                    //     String password_baru = inputan.nextLine();
+                    //     editBuku.updatePassword(id, password_baru);
+                    //     break;
+                    default:
+                        System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
+                        super.sleep(1);
+                        Menu.clearConsole();
+                        manageUsers();
+                }
 
-                // System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
-                // sleep(5);
-                // Menu.clearConsole();
-                // manageUsers();
+
+                System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
+                sleep(5);
+                Menu.clearConsole();
+                manageBuku();
                 break;
                 
             case "4":
