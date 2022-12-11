@@ -171,6 +171,7 @@ public class Admin extends Menu {
 
 
                     case "3":
+                        Menu.clearConsole();
                         System.out.println("\nPilih Role: \n1. Admin\n2. Staff\n3. User");
                         String pilihanRole = inputan.nextLine();
                         switch(pilihanRole){
@@ -305,7 +306,9 @@ public class Admin extends Menu {
 
                 System.out.println("Masukkan ID Buku: ");
                 id = inputan.nextLine();
-                baca.returnBukuBy("id", id);
+
+                Menu.clearConsole();
+                baca.printBukuBy("id", id);
 
                 System.out.println("Data apa yang akan di Update: ");
                 System.out.println("1. Judul Buku\n2. Kategori\n3. Bahasa\n4. Nama Pengarang\n5. Tahun Terbit\n6. Jumlah Maks Buku");
@@ -325,24 +328,40 @@ public class Admin extends Menu {
                         System.out.println("Kategori buku berhasil diubah");
                         baca.printBukuBy("id", id);
                         break;
-                    // case "3":
-                    //     System.out.println("\nMasukkan Role Baru: ");
-                    //     String role_baru = inputan.nextLine();
-                    //     editBuku.updateRole(id, role_baru);
-                    //     break;
-                    // case "4":
-                    //     System.out.println("\nMasukkan Password Baru: ");
-                    //     String password_baru = inputan.nextLine();
-                    //     editBuku.updatePassword(id, password_baru);
-                    //     break;
+                    case "3":
+                        System.out.println("\nMasukkan Bahasa Baru: ");
+                        String bahasa_baru = inputan.nextLine();
+                        editBuku.updateBuku("bahasa", id, bahasa_baru);
+                        System.out.println("Bahasa buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
+                    case "4":
+                        System.out.println("\nMasukkan Nama Pengarang Baru: ");
+                        String nama_baru = inputan.nextLine();
+                        editBuku.updateBuku("nama_pengarang", id, nama_baru);
+                        System.out.println("Nama Pengarang buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
+                    case "5":
+                        System.out.println("\nMasukkan Tahun Terbit Baru: ");
+                        String tahun_baru = inputan.nextLine();
+                        editBuku.updateBuku("tahun_terbit", id, tahun_baru);
+                        System.out.println("Tahun Terbit buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
+                    case "6":
+                        System.out.println("\nMasukkan Jumlah Maksimum Baru: ");
+                        String maks_baru = inputan.nextLine();
+                        editBuku.updateBuku("max_buku", id, maks_baru);
+                        System.out.println("Jumlah Maksimum buku berhasil diubah");
+                        baca.printBukuBy("id", id);
+                        break;
                     default:
                         System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
                         super.sleep(1);
                         Menu.clearConsole();
                         manageUsers();
                 }
-
-
                 System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
                 sleep(5);
                 Menu.clearConsole();
