@@ -57,6 +57,7 @@ public class Admin extends Menu {
     protected void manageUsers(){
         Scanner inputan = new Scanner(System.in);
         Read fetch = new Read();
+        // Print prnt = new Print();
 
         String id, username, password, nama_lengkap, progdi, role;
 
@@ -111,6 +112,7 @@ public class Admin extends Menu {
                     case "1":
                         Menu.clearConsole();
                         fetch.fetchAllUser();
+                        // prnt.printUser();
                         manageUsers();
                         break;
                     case "2":
@@ -216,9 +218,10 @@ public class Admin extends Menu {
     
     protected void manageBuku(){
         Scanner inputan = new Scanner(System.in);
+        Read baca = new Read();
         // Read fetch = new Read();
 
-        String id, judul, bahasa, pengarang;
+        String id, kategori, judul, bahasa, pengarang;
         int tahun, maxBuku, sisaBuku;
 
         System.out.println("Menu Manage Buku");
@@ -232,6 +235,9 @@ public class Admin extends Menu {
                 Create tambahBuku = new Create();
                 
                 System.out.println("Menu Tambah Buku");
+
+                System.out.println("Masukkan Kategori Buku: ");
+                kategori = inputan.nextLine();
                 System.out.println("Masukkan Judul Buku: ");
                 judul = inputan.nextLine();
                 System.out.println("Masukkan Bahasa Buku: ");
@@ -242,7 +248,7 @@ public class Admin extends Menu {
                 tahun = inputan.nextInt();
                 System.out.println("Masukkan Jumlah Buku: ");
                 maxBuku = inputan.nextInt();
-                tambahBuku.tambahBuku(judul, bahasa, pengarang, tahun, maxBuku);
+                tambahBuku.tambahBuku(kategori, judul, bahasa, pengarang, tahun, maxBuku);
                 System.out.println("Buku " + judul + " berhasil ditambahkan\n");
                 sisaBuku = maxBuku - 2;
                 System.out.println("[DEBUG] Sisa Buku :: " + sisaBuku);
@@ -254,39 +260,8 @@ public class Admin extends Menu {
                 break;
 
             case "2":
-                // Menu.clearConsole();
-                // // System.out.println("Menu Lihat User");
-                // // NANTI BISA DI SORT BY PARAMETER
-                // System.out.println("DAFTAR PENGGUNA PERPUSTAKAAN");
-                // System.out.println("1. Ambil Semua Data\n2. Ambil Data sesuai Prodi\n3. Ambil Data sesuai Role");
-                // System.out.println("Masukkan pilihan anda: ");
-                // String pilihanData = inputan.nextLine();
-
-                // switch(pilihanData){
-                //     case "1":
-                //         Menu.clearConsole();
-                //         fetch.fetchAllUser();
-                //         manageUsers();
-                //         break;
-                //     case "2":
-                //         Menu.clearConsole();
-                //         System.out.println("Masukkan Nama Prodi");
-                //         String valueQuery = inputan.nextLine();
-                //         fetch.fetchUserBy("progdi", valueQuery);
-                //         manageUsers();
-                //         break;
-                //     case "3":
-                //         Menu.clearConsole();
-                //         System.out.println("Masukkan Nama Role");
-                //         valueQuery = inputan.nextLine();
-                //         fetch.fetchUserBy("role", valueQuery);
-                //         manageUsers();
-                //         break;
-                //     default:
-                //         Menu.clearConsole();
-                //         manageUsers();
-                //         break;
-                // }
+                Menu.clearConsole();
+                baca.bacaDatabaseBuku();
                 break;
 
             case "3":

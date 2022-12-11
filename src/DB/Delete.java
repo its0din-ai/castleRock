@@ -13,7 +13,7 @@ public class Delete extends Conn {
     // Method untuk menambahkan data user
     public void deleteUsers(String id){
         Read byId = new Read();
-        Scanner validasi = new Scanner(System.in);
+        Scanner konfirmasi = new Scanner(System.in);
 
         byId.fetchUserBy("id", id);
 
@@ -23,10 +23,11 @@ public class Delete extends Conn {
 
         } else{
             System.out.println("Apakah anda yakin ingin menghapus data diatas? ([Y]/n)");
-            String confirm = validasi.nextLine();
+            String confirm = konfirmasi.nextLine();
 
             switch(confirm.toLowerCase()){
-                case "y" :
+                // case y or empty string
+                case "y":
                     String QUERY = "DELETE FROM `users` WHERE `users`.`id` = ?;";
     
                     try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -47,20 +48,8 @@ public class Delete extends Conn {
                     System.out.println("User Tidak jadi dihapus");
                     break;
     
-                default:
-                    QUERY = "DELETE FROM `users` WHERE `users`.`id` = ?;";
-    
-                    try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
-                        PreparedStatement statement = connct.prepareStatement(QUERY);)
-                    {
-                        statement.setString(1, id);
-                        
-                        System.out.println("User dengan ID " + id + " Berhasil dihapus");
-                        statement.executeUpdate();
-            
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                }
+                case "":
+                    System.out.println("Command salah!");
                     break;
             }
         }

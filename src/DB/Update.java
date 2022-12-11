@@ -101,6 +101,28 @@ public class Update extends Conn {
     }
 
 
+    // Method untuk mengupdate data Buku
+    public void updateJudul(String id, String judul_baru){
+        Read byId = new Read();
+        String QUERY = "UPDATE `katalog` SET `judul_buku` = ? WHERE `katalog`.`id` = ?;";
+    
+        try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connct.prepareStatement(QUERY);)
+        {
+            statement.setString(1, judul_baru);
+            statement.setString(2, id);
+            
+            statement.executeUpdate();
+            
+            Menu.clearConsole();
+            System.out.println("Judul Buku berhasil di update, berikut hasilnya");
+            byId.fetchUserBy("id", id);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

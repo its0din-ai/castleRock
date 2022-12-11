@@ -36,18 +36,19 @@ public class Create extends Conn {
     
     }
 
-    public void tambahBuku(String judul, String bahasa, String pengarang, int tahun, int maxBuku){
+    public void tambahBuku(String kategori, String judul, String bahasa, String pengarang, int tahun, int maxBuku){
         
-        String QUERY = "INSERT INTO `katalog` (`id`, `judul_buku`, `bahasa`, `nama_pengarang`, `tahun_terbit`, `max_buku`) VALUES (NULL, ?, ?, ?, ?, ?);";
+        String QUERY = "INSERT INTO `katalog` (`id`, `kategori`, `judul_buku`, `bahasa`, `nama_pengarang`, `tahun_terbit`, `max_buku`) VALUES (NULL, ?, ?, ?, ?, ?, ?);";
 
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(QUERY);)
          {
-            statement.setString(1, judul);
-            statement.setString(2, bahasa);
-            statement.setString(3, pengarang);
-            statement.setInt(4, tahun);
-            statement.setInt(5, maxBuku);
+            statement.setString(1, kategori);
+            statement.setString(2, judul);
+            statement.setString(3, bahasa);
+            statement.setString(4, pengarang);
+            statement.setInt(5, tahun);
+            statement.setInt(6, maxBuku);
             
             System.out.println("SEDANG MENULIS DATA KEDALAM DB");
             statement.executeUpdate();

@@ -21,21 +21,21 @@ public class App {
     }
 
     protected static void mainMenu(String[] users){
-        switch(users[3]){
+        switch(users[4]){
             case "admin":
                 Admin menuAdmin = new Admin();
                 Menu.clearConsole();
-                menuAdmin.menuAdmin(users[1]);
+                menuAdmin.menuAdmin(users[2]);
                 break;
             case "staff":
                 Staff menuStaff = new Staff();
                 Menu.clearConsole();
-                menuStaff.menuStaff(users[1], users[2]);
+                menuStaff.menuStaff(users[2], users[3]);
                 break;
             case "user":
                 Users menuUser = new Users();
                 Menu.clearConsole();
-                menuUser.menuUser(users[4], users[0], users[1], users[2]);
+                menuUser.menuUser(users[0], users[1], users[2], users[3]);
                 break;
             default:
                 System.out.println("Kamu ini siapa ngab? Hengker kh?");

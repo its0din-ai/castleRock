@@ -74,7 +74,7 @@ public class Autentikasi extends Read {
     // Method untuk membandingkan password yang diinput dengan password yang ada di database
     private boolean comparePassword(String username, String passInpt) {
         Read passDb = new Read();
-        String pass = passDb.bacaPassword(username);
+        String pass = passDb.bacaUser(username)[5];
 
         if(getMd5(passInpt).equals(pass)){
             return true;

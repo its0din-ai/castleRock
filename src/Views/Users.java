@@ -49,7 +49,7 @@ public class Users {
         Update updtr = new Update();
         Autentikasi autentikasi = new Autentikasi();
         Scanner inptPass = new Scanner(System.in);
-        String pswrdLama = baca.bacaPassword(usrnm);
+        String pswrdLama = baca.bacaUser(usrnm)[5];
 
         System.out.println("Masukkan password lama anda");
         String pswLama =  autentikasi.getMd5(inptPass.nextLine());
