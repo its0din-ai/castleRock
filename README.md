@@ -19,5 +19,6 @@ Version History ::
 - v0.4-dev      -  User can Update password with last password for Verification    ✅
 - v0.5-dev      -  Add duplicate username validation on AddUser function    ✅
 - v0.6-dev      -  Create, and Read Book Data    ✅
+- v0.7-dev      -  Update, and Delete Book Data  ✅
 
-- v0.X-dev      -  Add new book, Delete book, Update book.
+- v0.X-dev      -  Create Inventory and Done the basic App, just improving!!!
