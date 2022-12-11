@@ -20,29 +20,29 @@ public class Admin extends Menu {
 
         switch(inputPilihan){
             case "1":
-                Menu.clearConsole();
+                super.clearConsole();
                 manageUsers();
                 break;
             case "2":
                 System.out.println("Menu Manage Buku");
-                Menu.clearConsole();
+                super.clearConsole();
                 manageBuku();
                 break;
             case "3":
                 System.out.println("Menu Liat Katalog Buku");
-                Menu.clearConsole();
+                super.clearConsole();
                 baca.bacaDatabaseBuku();
                 break;
             case "4":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Menu Pinjam Buku");
                 break;
             case "5":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Menu Kembalikan Buku");
                 break;
             case "6":
-                Menu.clearConsole();
+                super.clearConsole();
                 Menu.bannerLogout();
                 System.exit(0);
             default:
@@ -68,7 +68,7 @@ public class Admin extends Menu {
         String inputPilihan = inputan.nextLine();
         switch(inputPilihan){
             case "1":
-                Menu.clearConsole();
+                super.clearConsole();
                 Create tambahUsr = new Create();
                 
                 System.out.println("Menu Tambah User");
@@ -87,20 +87,20 @@ public class Admin extends Menu {
                     tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
                     System.out.println("User " + username + " berhasil ditambahkan\n");
                     sleep(1);
-                    Menu.clearConsole();
+                    super.clearConsole();
                     manageUsers();
                 }
                 else if(duplikat != null){
                     System.out.println("Username sudah ada");
                     sleep(1);
-                    Menu.clearConsole();
+                    super.clearConsole();
                     manageUsers();
                 }
 
                 break;
 
             case "2":
-                Menu.clearConsole();
+                super.clearConsole();
                 // System.out.println("Menu Lihat User");
                 // NANTI BISA DI SORT BY PARAMETER
                 System.out.println("DAFTAR PENGGUNA PERPUSTAKAAN");
@@ -110,33 +110,33 @@ public class Admin extends Menu {
 
                 switch(pilihanData){
                     case "1":
-                        Menu.clearConsole();
+                        super.clearConsole();
                         fetch.fetchAllUser();
                         manageUsers();
                         break;
                     case "2":
-                        Menu.clearConsole();
+                        super.clearConsole();
                         System.out.println("Masukkan Nama Prodi");
                         String valueQuery = inputan.nextLine();
                         fetch.fetchUserBy("progdi", valueQuery);
                         manageUsers();
                         break;
                     case "3":
-                        Menu.clearConsole();
+                        super.clearConsole();
                         System.out.println("Masukkan Nama Role");
                         valueQuery = inputan.nextLine();
                         fetch.fetchUserBy("role", valueQuery);
                         manageUsers();
                         break;
                     default:
-                        Menu.clearConsole();
+                        super.clearConsole();
                         manageUsers();
                         break;
                 }
                 break;
 
             case "3":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Menu EDIT User");
                 Update editUser = new Update();
 
@@ -171,7 +171,7 @@ public class Admin extends Menu {
 
 
                     case "3":
-                        Menu.clearConsole();
+                        super.clearConsole();
                         System.out.println("\nPilih Role: \n1. Admin\n2. Staff\n3. User");
                         String pilihanRole = inputan.nextLine();
                         switch(pilihanRole){
@@ -206,20 +206,20 @@ public class Admin extends Menu {
                     default:
                         System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
                         super.sleep(1);
-                        Menu.clearConsole();
+                        super.clearConsole();
                         manageUsers();
                 }
 
                 System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
                 sleep(5);
-                Menu.clearConsole();
+                super.clearConsole();
                 manageUsers();
                 break;
                 
             case "4":
                 Delete hapusById = new Delete();
 
-                Menu.clearConsole();
+                super.clearConsole();
                 fetch.fetchAllUser();
 
                 System.out.println("\nMasukkan ID yang akan dihapus!");
@@ -227,12 +227,12 @@ public class Admin extends Menu {
                 hapusById.deleteUsers(id);
 
                 sleep(2);
-                Menu.clearConsole();
+                super.clearConsole();
                 manageUsers();
                 break;
 
             case "5":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Kembali");
                 super.mainMenu(App.users);
                 break;
@@ -240,7 +240,7 @@ public class Admin extends Menu {
             default:
                 System.out.println("Pilihan tidak tersedia !");
                 super.sleep(1);
-                Menu.clearConsole();
+                super.clearConsole();
                 manageUsers();
 
         break;
@@ -263,7 +263,7 @@ public class Admin extends Menu {
         String inputPilihan = inputan.nextLine();
         switch(inputPilihan){
             case "1":
-                Menu.clearConsole();
+                super.clearConsole();
                 Create tambahBuku = new Create();
                 
                 System.out.println("Menu Tambah Buku");
@@ -285,20 +285,20 @@ public class Admin extends Menu {
                 sisaBuku = maxBuku - 2;
                 System.out.println("[DEBUG] Sisa Buku :: " + sisaBuku);
                 sleep(3);
-                Menu.clearConsole();
+                super.clearConsole();
                 manageBuku();
                 
 
                 break;
 
             case "2":
-                Menu.clearConsole();
+                super.clearConsole();
                 baca.bacaDatabaseBuku();
                 manageBuku();
                 break;
 
             case "3":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Menu EDIT Buku");
                 Update editBuku = new Update();
 
@@ -307,7 +307,7 @@ public class Admin extends Menu {
                 System.out.println("Masukkan ID Buku: ");
                 id = inputan.nextLine();
 
-                Menu.clearConsole();
+                super.clearConsole();
                 baca.printBukuBy("id", id);
 
                 System.out.println("Data apa yang akan di Update: ");
@@ -359,32 +359,32 @@ public class Admin extends Menu {
                     default:
                         System.out.println("MAAF ERROR PADA SISI PENGGUNA awkoawkoakwo");
                         super.sleep(1);
-                        Menu.clearConsole();
-                        manageUsers();
+                        super.clearConsole();
+                        manageBuku();
                 }
                 System.out.println("Tunggu selama 5 detik sebelum kembali ke Prompt");
                 sleep(5);
-                Menu.clearConsole();
+                super.clearConsole();
                 manageBuku();
                 break;
                 
             case "4":
-                // Delete hapusById = new Delete();
+                Delete hapusById = new Delete();
 
-                // Menu.clearConsole();
-                // fetch.fetchAllUser();
+                super.clearConsole();
+                baca.bacaDatabaseBuku();
 
-                // System.out.println("\nMasukkan ID yang akan dihapus!");
-                // id = inputan.nextLine();
-                // hapusById.deleteUsers(id);
+                System.out.println("\nMasukkan ID yang akan dihapus!");
+                id = inputan.nextLine();
+                hapusById.deleteBuku(id);
 
-                // sleep(2);
-                // Menu.clearConsole();
-                // manageUsers();
+                sleep(2);
+                super.clearConsole();
+                manageBuku();
                 break;
 
             case "5":
-                Menu.clearConsole();
+                super.clearConsole();
                 System.out.println("Kembali");
                 super.mainMenu(App.users);
                 break;
@@ -392,8 +392,8 @@ public class Admin extends Menu {
             default:
                 System.out.println("Pilihan tidak tersedia !");
                 super.sleep(1);
-                Menu.clearConsole();
-                manageUsers();
+                super.clearConsole();
+                manageBuku();
 
         break;
         }
