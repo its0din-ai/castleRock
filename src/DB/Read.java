@@ -1,6 +1,8 @@
 package DB;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.lang.String;
 
 
@@ -175,6 +177,61 @@ public class Read extends Conn {
                 System.out.println("[*] Jumlah Tersedia      :: " + tersedia + " Buku");
             }
             System.out.println("-----------------------------------------------------------------------------------------------------------------");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    // ntar dipindah
+    public String modulLocale(String tanggal){
+        Locale localeID = new Locale("id", "ID");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy", localeID);
+        java.sql.Date tanggalSql = java.sql.Date.valueOf(tanggal);  
+
+        Date tgl = new Date(tanggalSql.getTime());
+        String tanggalIndonesia = sdf.format(tgl);
+
+        return tanggalIndonesia;
+    }
+
+    public void printInventory(String user_id){
+        String getKatalog = "SELECT id_buku, DATE(tanggal_pinjam) FROM `inventory` WHERE id_user = ?;";
+        try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connct.prepareStatement(getKatalog);)
+        {
+            statement.setString(1, user_id);
+            ResultSet hasilKueri = statement.executeQuery();
+
+            System.out.println("Inventori Buku Anda");
+
+            while(hasilKueri.next()){
+                String tgls = hasilKueri.getString("DATE(tanggal_pinjam)");
+                String id_buku = hasilKueri.getString("id_buku");
+                String getBuku = "SELECT * FROM katalog WHERE id = ?;";
+                try(Connection connct2 = DriverManager.getConnection(DB_URL, USER, PASS);
+                    PreparedStatement statement2 = connct2.prepareStatement(getBuku);)
+                {
+                    statement2.setString(1, id_buku);
+                    ResultSet hasilKueri2 = statement2.executeQuery();
+
+                    while(hasilKueri2.next()){
+                        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+                        System.out.println("[*] Tanggal Pinjam       :: " + modulLocale(tgls));
+                        System.out.println("[*] Kategori             :: " + hasilKueri2.getString("kategori"));
+                        System.out.println("[*] Judul Buku           :: " + hasilKueri2.getString("judul_buku"));
+                        System.out.println("[*] Bahasa               :: " + hasilKueri2.getString("bahasa"));
+                        System.out.println("[*] Pengarang Buku       :: " + hasilKueri2.getString("nama_pengarang"));
+                        System.out.println("[*] Tahun Terbit Buku    :: " + hasilKueri2.getInt("tahun_terbit"));
+
+                    }
+                } catch(SQLException e){
+                    e.printStackTrace();
+                }
+
+            }
+            System.out.println("-----------------------------------------------------------------------------------------------------------------");
+            
         } catch(SQLException e){
             e.printStackTrace();
         }

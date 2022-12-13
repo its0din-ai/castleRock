@@ -25,7 +25,7 @@ public class App {
             case "admin":
                 Admin menuAdmin = new Admin();
                 Menu.clearConsole();
-                menuAdmin.menuAdmin(users[2]);
+                menuAdmin.menuAdmin(users[0], users[2]);
                 break;
             case "staff":
                 Staff menuStaff = new Staff();

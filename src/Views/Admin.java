@@ -7,13 +7,13 @@ import DB.*;
 
 public class Admin extends Menu {
     
-    public void menuAdmin(String name){
+    public void menuAdmin(String id, String name){
         Scanner menu = new Scanner(System.in);
         Read baca = new Read();
 
         System.out.println("Anda Login Sebagai " + name);
         System.out.println("Menu Admin");
-        System.out.println("1. Manage User\n2. Manage Buku\n3. Lihat Buku\n4. Pinjam Buku\n5. Kembalikan Buku\n6. Logout");
+        System.out.println("1. Manage User\n2. Manage Buku\n3. Lihat Buku\n4. Pinjam Buku\n5. Kembalikan Buku\n6. Logout\n7. Lihat Inven (DBG)");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
         String inputPilihan = menu.nextLine();
@@ -45,6 +45,10 @@ public class Admin extends Menu {
                 super.clearConsole();
                 Menu.bannerLogout();
                 System.exit(0);
+            case "7":
+                super.clearConsole();
+                baca.printInventory(id);
+                break;
             default:
                 System.out.println("Pilihan tidak tersedia");
                 sleep(1);

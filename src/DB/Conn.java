@@ -2,6 +2,7 @@ package DB;
 
 public class Conn {
     private final String DB_URL = "jdbc:mysql://localhost/castlerock_lib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    // private final String DB_URL = "jdbc:mysql://6.tcp.ngrok.io:10255/castlerock_lib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private final String USER = "koboKanaeru";
     private final String PASS = "!hengker99";
     String[] dbConfig = new String[3];
