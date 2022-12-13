@@ -39,7 +39,7 @@ public class Menu extends App {
         System.out.println("==========================================");
         System.out.println("             Anda telah logout");
         System.out.println("==========================================");
-        System.out.println("           ver.0.7-dev encrypt0r");
+        System.out.println("           ver.0.8-dev encrypt0r");
         System.out.println("------------------------------------------");
     }
 

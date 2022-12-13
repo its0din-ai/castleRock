@@ -20,5 +20,6 @@ Version History ::
 - v0.5-dev      -  Add duplicate username validation on AddUser function    ✅
 - v0.6-dev      -  Create, and Read Book Data    ✅
 - v0.7-dev      -  Update, and Delete Book Data  ✅
+- v0.8-dev      -  CREATE AND READ INVENTORY  ✅
 
 - v0.X-dev      -  Create Inventory and Done the basic App, just improving!!!
