@@ -10,6 +10,7 @@ public class Users {
         Scanner inptn = new Scanner(System.in);
 
         String inputan;
+        Read baca = new Read();
 
         System.out.println("Anda Login Sebagai " + name);
         System.out.println("Program Studi " + prodi + "\n");
@@ -18,7 +19,9 @@ public class Users {
 
         switch(inputan){
             case "1":
-                System.out.println("Lihat Buku");
+                Menu.clearConsole();
+                System.out.println("Daftar Buku Castlerock Library");
+                baca.bacaDatabaseBuku();
                 break;
             case "2":
                 System.out.println("Pinjam Buku");

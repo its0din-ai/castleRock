@@ -195,6 +195,9 @@ public class Read extends Conn {
         return tanggalIndonesia;
     }
 
+
+
+    // Baca Inventori
     public void printInventory(String user_id){
         String getKatalog = "SELECT id_buku, DATE(tanggal_pinjam) FROM `inventory` WHERE id_user = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);

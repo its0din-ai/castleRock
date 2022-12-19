@@ -58,6 +58,7 @@ public class Create extends Conn {
         }
     }
 
+    // pinjam buku
     public void tambahInventori(int id, int userID, int bukuID){
         String QUERY = "INSERT INTO `inventory` (`id_inventory`, `id_user`, `id_buku`) VALUES (NULL, ?, ?);";
 

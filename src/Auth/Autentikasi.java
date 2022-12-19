@@ -24,7 +24,7 @@ public class Autentikasi extends Read {
             Menu.clearConsole();
             Menu.bannerAwal();
 
-            System.out.println("Percobaan login maksimum adalah " + coba + " kali");
+            System.out.println("Percobaan login anda tersisa " + coba + " kali");
             System.out.print("Username: ");
             String username = usrnm.nextLine();
             String pass = passwordInput();
