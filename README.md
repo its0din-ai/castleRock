@@ -21,5 +21,8 @@ Version History ::
 - v0.6-dev      -  Create, and Read Book Data    ✅
 - v0.7-dev      -  Update, and Delete Book Data  ✅
 - v0.8-dev      -  CREATE AND READ INVENTORY  ✅
+- v0.9-dev-rc   -  UPDATE AND DELETE INVENTORY  ✅
+- v1.0-beta-rc  -  Add all menus and done the basic app, just improving!!!  ✅
 
-- v0.X-dev      -  Create Inventory and Done the basic App, just improving!!!
+
+- vX.X-rc       - Bug Testing!!!!

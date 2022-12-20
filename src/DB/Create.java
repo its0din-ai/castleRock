@@ -4,6 +4,7 @@ import java.sql.*;
 import java.lang.String;
 
 import Auth.*;
+import Views.Menu;
 
 public class Create extends Conn {
 
@@ -59,16 +60,17 @@ public class Create extends Conn {
     }
 
     // pinjam buku
-    public void tambahInventori(int id, int userID, int bukuID){
+    public void tambahInventori(String userID, String bukuID){
         String QUERY = "INSERT INTO `inventory` (`id_inventory`, `id_user`, `id_buku`) VALUES (NULL, ?, ?);";
 
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(QUERY);)
          {
-            statement.setInt(1, userID);
-            statement.setInt(2, bukuID);
+            statement.setString(1, userID);
+            statement.setString(2, bukuID);
             
-            System.out.println("Menambahkan ke Inventori, mohon ditunggu...");
+            System.out.println("Meminjam Buku, mohon ditunggu...");
+            Menu.sleep(2);
             statement.executeUpdate();
 
         } catch (SQLException e) {

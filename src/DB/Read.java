@@ -199,7 +199,7 @@ public class Read extends Conn {
 
     // Baca Inventori
     public void printInventory(String user_id){
-        String getKatalog = "SELECT id_buku, DATE(tanggal_pinjam) FROM `inventory` WHERE id_user = ?;";
+        String getKatalog = "SELECT id_inventory, id_buku, DATE(tanggal_pinjam) FROM `inventory` WHERE id_user = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(getKatalog);)
         {
@@ -220,6 +220,7 @@ public class Read extends Conn {
 
                     while(hasilKueri2.next()){
                         System.out.println("-----------------------------------------------------------------------------------------------------------------");
+                        System.out.println("[*] ID Peminjaman        :: " + hasilKueri.getInt("id_inventory"));
                         System.out.println("[*] Tanggal Pinjam       :: " + modulLocale(tgls));
                         System.out.println("[*] Kategori             :: " + hasilKueri2.getString("kategori"));
                         System.out.println("[*] Judul Buku           :: " + hasilKueri2.getString("judul_buku"));

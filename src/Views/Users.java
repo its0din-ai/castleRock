@@ -3,9 +3,10 @@ package Views;
 import java.util.Scanner;
 
 import DB.*;
+import Main.App;
 import Auth.*;
 
-public class Users {
+public class Users extends Menu {
     public void menuUser(String id, String username, String name, String prodi){
         Scanner inptn = new Scanner(System.in);
 
@@ -20,32 +21,38 @@ public class Users {
         switch(inputan){
             case "1":
                 Menu.clearConsole();
-                System.out.println("Daftar Buku Castlerock Library");
                 baca.bacaDatabaseBuku();
+                System.out.println("Tekan Enter untuk kembali ke menu");
+                inputan = inptn.nextLine();
+                super.mainMenu(App.users);
                 break;
             case "2":
                 System.out.println("Pinjam Buku");
+                peminjaman(id);
+                super.mainMenu(App.users);
                 break;
             case "3":
                 System.out.println("Kembalikan Buku");
+                pengembalian(id);
+                super.mainMenu(App.users);
                 break;
             case "4":
                 System.out.println("Ganti Password");
                 gantiPasswordUser(id, username);
 
-                menuUser(id, username, name, prodi);
+                super.mainMenu(App.users);
                 break;
             case "5":
                 System.out.println("Logout");
+                Menu.bannerLogout();
                 System.exit(0);
                 break;
             default:
                 System.out.println("Maaf menu salah!");
-                menuUser(id, username, name, prodi);
+                super.mainMenu(App.users);
         }
 
     }
-
 
     private void gantiPasswordUser(String id, String usrnm){
         Read baca = new Read();
@@ -64,9 +71,43 @@ public class Users {
             // String pswrdCrypt = autentikasi.getMd5(pswrdBaru);
             updtr.updatePassword(id, pswrdBaru);
             System.out.println("Password berhasil diganti, harap di ingat :)");
+            Menu.sleep(4);
         } else{
             System.out.println("Maaf, password lama anda Salah!");
         }
 
     }
+   
+    protected void peminjaman(String userid){
+        Scanner pinjam = new Scanner(System.in);
+        Read baca = new Read();
+        Create tambah = new Create();
+
+        System.out.println("Menu Peminjaman");
+        baca.bacaDatabaseBuku();
+        System.out.println("Masukkan ID Buku: ");
+        String bukuid = pinjam.nextLine();
+
+        tambah.tambahInventori(userid, bukuid);
+
+
+    }
+
+    protected void pengembalian(String userid){
+        Scanner kembalikan = new Scanner(System.in);
+        Read baca = new Read();
+        Delete hapus = new Delete();
+
+        System.out.println("Menu Pengembalian");
+        baca.printInventory(userid);
+        System.out.println("Masukkan ID Peminjaman: ");
+        String id = kembalikan.nextLine();
+
+        hapus.kurangiInventori(id);
+    }
+
+
+
+
+
 }

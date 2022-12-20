@@ -93,16 +93,16 @@ public class Delete extends Conn {
 
 
     // kembalikan buku
-    public void kurangiInventori(int id, int userID, int bukuID){
+    public void kurangiInventori(String idInven){
         String QUERY = "DELETE FROM `inventory` WHERE `inventory`.`id_inventory` = ?;";
 
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(QUERY);)
             {
-            statement.setInt(1, userID);
-            statement.setInt(2, bukuID);
+            statement.setString(1, idInven);
             
-            System.out.println("Menambahkan ke Inventori, mohon ditunggu...");
+            System.out.println("Mengembalikan Buku, mohon ditunggu...");
+            Menu.sleep(2);
             statement.executeUpdate();
 
         } catch (SQLException e) {

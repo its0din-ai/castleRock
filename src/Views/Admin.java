@@ -32,22 +32,31 @@ public class Admin extends Menu {
                 System.out.println("Menu Liat Katalog Buku");
                 super.clearConsole();
                 baca.bacaDatabaseBuku();
+                System.out.println("Tekan Enter untuk kembali ke menu");
+                inputPilihan = menu.nextLine();
+                super.mainMenu(App.users);
                 break;
             case "4":
                 super.clearConsole();
                 System.out.println("Menu Pinjam Buku");
+                peminjaman(id);
+                super.mainMenu(App.users);
                 break;
             case "5":
                 super.clearConsole();
                 System.out.println("Menu Kembalikan Buku");
+                pengembalian(id);
+                super.mainMenu(App.users);
                 break;
             case "6":
                 super.clearConsole();
                 Menu.bannerLogout();
                 System.exit(0);
+                break;
             case "7":
                 super.clearConsole();
                 baca.printInventory(id);
+                
                 break;
             default:
                 System.out.println("Pilihan tidak tersedia");
@@ -82,12 +91,17 @@ public class Admin extends Menu {
                 if(duplikat == null){
                     System.out.println("Masukkan Password: ");
                     password = inputan.nextLine();
+
                     System.out.println("Masukkan Nama Lengkap: ");
                     nama_lengkap = inputan.nextLine();
+
                     System.out.println("Masukkan Program Studi: ");
                     progdi = inputan.nextLine();
-                    System.out.println("Masukkan Role: ");
+
+                    System.out.println("Masukkan Role: \n(admin, staff, user)");
                     role = inputan.nextLine();
+
+
                     tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
                     System.out.println("User " + username + " berhasil ditambahkan\n");
                     sleep(1);
@@ -298,6 +312,8 @@ public class Admin extends Menu {
             case "2":
                 super.clearConsole();
                 baca.bacaDatabaseBuku();
+                System.out.println("Tekan Enter untuk kembali ke menu Manage Buku");
+                inputPilihan = inputan.nextLine();
                 manageBuku();
                 break;
 
@@ -404,9 +420,33 @@ public class Admin extends Menu {
 
     }
 
-    
+    protected void peminjaman(String userid){
+        Scanner pinjam = new Scanner(System.in);
+        Read baca = new Read();
+        Create tambah = new Create();
+
+        System.out.println("Menu Peminjaman");
+        baca.bacaDatabaseBuku();
+        System.out.println("Masukkan ID Buku: ");
+        String bukuid = pinjam.nextLine();
+
+        tambah.tambahInventori(userid, bukuid);
 
 
+    }
+
+    protected void pengembalian(String userid){
+        Scanner kembalikan = new Scanner(System.in);
+        Read baca = new Read();
+        Delete hapus = new Delete();
+
+        System.out.println("Menu Pengembalian");
+        baca.printInventory(userid);
+        System.out.println("Masukkan ID Peminjaman: ");
+        String id = kembalikan.nextLine();
+
+        hapus.kurangiInventori(id);
+    }
 
 
 

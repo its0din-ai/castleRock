@@ -34,7 +34,6 @@ public class Update extends Conn {
 
     // Method untuk mengupdate password user
     public void updatePassword(String id, String password_baru){
-        Read byId = new Read();
         Autentikasi auth = new Autentikasi();
         String passwordBaruEncrptd = auth.getMd5(password_baru);
 
@@ -47,10 +46,6 @@ public class Update extends Conn {
             statement.setString(2, id);
             
             statement.executeUpdate();
-            
-            Menu.clearConsole();
-            System.out.println("Password berhasil di update, menjadi : " + password_baru + " (" + passwordBaruEncrptd + ")");
-            byId.fetchUserBy("id", id);
             
         } catch (SQLException e) {
             e.printStackTrace();
