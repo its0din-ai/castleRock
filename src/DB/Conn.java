@@ -1,7 +1,8 @@
 package DB;
 
-import java.io.File;
+// import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,7 +18,7 @@ public class Conn {
     String[] secureConfig = new String[3];
 
     private String[] securedCreds() throws ParserConfigurationException, SAXException, IOException {
-        File configFile = new File("config.xml");
+        InputStream configFile = getClass().getClassLoader().getResourceAsStream("config/config.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(configFile);

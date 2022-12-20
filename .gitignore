@@ -1,5 +1,5 @@
 /.vscode/
 info.txt
 *.code-workspace
-config.xml
+config/*
 *.env
