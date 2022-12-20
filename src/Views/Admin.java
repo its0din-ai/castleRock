@@ -13,7 +13,7 @@ public class Admin extends Menu {
 
         System.out.println("Anda Login Sebagai " + name);
         System.out.println("Menu Admin");
-        System.out.println("1. Manage User\n2. Manage Buku\n3. Lihat Buku\n4. Pinjam Buku\n5. Kembalikan Buku\n6. Logout\n7. Lihat Inven (DBG)");
+        System.out.println("1. Manage User\n2. Manage Buku\n3. Lihat Buku\n4. Pinjam Buku\n5. Kembalikan Buku\n6. Logout");
         System.out.println("===================================");
         System.out.println("Masukkan pilihan anda: ");
         String inputPilihan = menu.nextLine();
@@ -52,11 +52,6 @@ public class Admin extends Menu {
                 super.clearConsole();
                 Menu.bannerLogout();
                 System.exit(0);
-                break;
-            case "7":
-                super.clearConsole();
-                baca.printInventory(id);
-                
                 break;
             default:
                 System.out.println("Pilihan tidak tersedia");
@@ -447,8 +442,6 @@ public class Admin extends Menu {
 
         hapus.kurangiInventori(id);
     }
-
-
 
 
 }
