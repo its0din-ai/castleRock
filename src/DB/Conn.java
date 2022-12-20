@@ -13,28 +13,25 @@ import org.xml.sax.SAXException;
 
 public class Conn {
     
-
-    private final String DB_URL = "jdbc:mysql://103.172.205.207/castlerock_lib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    // private final String DB_URL = "jdbc:mysql://6.tcp.ngrok.io:10255/castlerock_lib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-
-    
     String[] dbConfig = new String[3];
-    String[] secureConfig = new String[2];
+    String[] secureConfig = new String[3];
 
     private String[] securedCreds() throws ParserConfigurationException, SAXException, IOException {
         File configFile = new File("config.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(configFile);
+        NodeList urlNodes = document.getElementsByTagName("url");
         NodeList usernameNodes = document.getElementsByTagName("username");
         NodeList passwordNodes = document.getElementsByTagName("password");
+        String url = urlNodes.item(0).getTextContent();
         String username = usernameNodes.item(0).getTextContent();
         String password = passwordNodes.item(0).getTextContent();
-        secureConfig[0] = username;
-        secureConfig[1] = password;
+        secureConfig[0] = url;
+        secureConfig[1] = username;
+        secureConfig[2] = password;
         return secureConfig;
     }
-
 
     public String[] getConfig() {
         try {
@@ -43,9 +40,9 @@ public class Conn {
             e.printStackTrace();
         }
 
-        dbConfig[0] = DB_URL;
-        dbConfig[1] = secureConfig[0];
-        dbConfig[2] = secureConfig[1];
+        dbConfig[0] = secureConfig[0];
+        dbConfig[1] = secureConfig[1];
+        dbConfig[2] = secureConfig[2];
         return dbConfig;
     }
 }
