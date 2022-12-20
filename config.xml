@@ -1,5 +1,0 @@
-<config>
-    <url>jdbc:mysql://[YOUR SQL DB ADDRESS]/castlerock_lib?useSSL=false</url>
-    <username>[YOUR SQL DB USERNAME]</username>
-    <password>[YOUR SQL DB PASSWORD]</password>
-</config>
