@@ -12,7 +12,11 @@ public class Read extends Conn {
     String USER = getConfig()[1];
     String PASS = getConfig()[2];
 
-    // Method untuk format Tanggal
+    /**
+       Method dibawah ini akan mengembalikan nilai String
+       dari format tanggal SQL kedalam format Indonesia
+       contohnya 2022-12-20 akan menjadi 20 Desember 2022
+    */
     public String modulLocale(String tanggal){
         Locale localeID = new Locale("id", "ID");
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy", localeID);
@@ -24,7 +28,13 @@ public class Read extends Conn {
         return tanggalIndonesia;
     }
 
-    // Method untuk membaca data user berdasarkan username
+
+    
+    /**
+       Method bacaUser akan melakukan Query SELECT pada tabel users
+       dan mengembalikan nilai String[] berisi data user
+       berdasarkan username yang diinputkan
+    */
     public String[] bacaUser(String username) {
         String[] usr = new String[6];
         String getUser = "SELECT id, username, nama_lengkap, progdi, role, password FROM `users` WHERE `username` = ?;";
@@ -48,7 +58,12 @@ public class Read extends Conn {
         return usr;
     }
 
-    // Method untuk mencetak List User keseluruhan
+
+    /**
+       Method dibawah ini akan mencetak / print ke Terminal
+       seluruh data yang ada pada tabel users
+       dengan format seperti table ascii
+    */
     public void fetchAllUser(){
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
@@ -70,7 +85,13 @@ public class Read extends Conn {
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
     }
 
-    // Method untuk mencetak List User berdasarkan parameter dan value tertentu
+
+    /**
+       Method ini akan mencetak / print ke Terminal juga
+       akan tetapi data yang dicetak hanya data yang sesuai
+       dengan parameter dan value yang diinputkan.
+       analoginya seperti melakukan Filter Data pada tabel
+    */
     public void fetchUserBy(String param, String value){
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
         System.out.format("|  ID  |           USERNAME           |            NAMA LENGKAP            |       PROGRAM STUDI       |     ROLE     |%n");
@@ -96,7 +117,13 @@ public class Read extends Conn {
 
     }
     
-    // Method untuk mengembalikan nilai User berdasarkan parameter dan value tertentu
+    /**
+       Sama seperti sebelumnya, method ini akan
+       melakukan Query SELECT pada tabel users
+       dengan parameter dan value yang diinputkan
+       namun method ini akan mengembalikan nilai String
+       agar data dapat diolah kembali oleh java
+    */
     public String returnUserBy(String param, String value){
         String result;
         
@@ -117,7 +144,11 @@ public class Read extends Conn {
         return null;
     }
     
-    // Method untuk membaca database buku yang ada di katalog
+
+    /**
+       Method dibawah ini akan mencetak / print ke Terminal
+       seluruh data yang ada pada tabel katalog
+    */
     public void bacaDatabaseBuku(){
         String getKatalog = "SELECT * FROM katalog";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -142,7 +173,13 @@ public class Read extends Conn {
         }
     }
 
-    // Method untuk mengembalikan nilai buku berdasarkan parameter dan value tertentu
+
+    /**
+       Sama seperti diatas, method ini akan mengembalikan nilai
+       String agar data dapat diolah kembali oleh java
+       nilai yang dikembalikan ini adalah data Buku yang ada di
+       database katalog
+    */
     public String returnBukuBy(String param, String value){
         String result;
         
@@ -163,9 +200,13 @@ public class Read extends Conn {
         return null;
     }
 
-    // Method untuk mencetak List Buku berdasarkan parameter dan value tertentu
+
+    /**
+       Method ini dapat melakukan Filter data terhadap
+       buku apa yang akan diambil oleh Query. dengan 
+       menggunakan parameter dan value yang diinputkan
+    */
     public void printBukuBy(String param, String value){
-        // String result;
         
         String getKatalog = "SELECT * FROM katalog WHERE " + param + " = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -192,7 +233,11 @@ public class Read extends Conn {
         }
     }
 
-    // Baca Inventori
+    /**
+       Method dibawah ini akan mencetak / print ke Terminal
+       seluruh data yang ada pada tabel inventory
+       dengan user_id sebagai parameternya
+    */
     public void printInventory(String user_id){
         String getKatalog = "SELECT id_inventory, id_buku, DATE(tanggal_pinjam) FROM `inventory` WHERE id_user = ?;";
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);

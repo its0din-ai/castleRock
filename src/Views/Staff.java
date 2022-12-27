@@ -7,6 +7,12 @@ import DB.*;
 
 public class Staff extends Menu {
 
+    /**
+       Method dibawah untuk menampilkan menu
+       jika user adalah Staff, didalamnya ada
+       5 menu yaitu: Manage Buku, Lihat Buku,
+       Pinjam Buku, Kembalikan Buku, dan Logout
+    */
     public void menuStaff(String id, String name){
         Scanner menu = new Scanner(System.in);
         Read baca = new Read();
@@ -58,6 +64,13 @@ public class Staff extends Menu {
 
     }
 
+    /**
+       Method dibawah untuk menampilkan menu
+       Manage Buku, didalamnya ada 5 menu yaitu:
+       Tambah Buku, Lihat Buku, Edit Buku, Hapus Buku,
+       dan Kembali. Menu ini hanya tersedia untuk role
+       Admin dan Staff
+    */
     protected void manageBuku(){
         Scanner inputan = new Scanner(System.in);
         Read baca = new Read();
@@ -212,6 +225,12 @@ public class Staff extends Menu {
 
     }
 
+    /**
+       Method dibawah untuk menampilkan menu
+       Peminjaman buku, dimana method ini akan
+       meminta input dari user berupa ID buku.
+       sebelumnya akan ditampilkan daftar buku
+    */
     protected void peminjaman(String userid){
         Scanner pinjam = new Scanner(System.in);
         Read baca = new Read();
@@ -227,6 +246,13 @@ public class Staff extends Menu {
 
     }
 
+    /**
+       Method dibawah untuk menampilkan menu
+       Pengembalian buku, dimana method ini akan
+       meminta input dari user berupa ID Inventori.
+       sebelumnya akan ditampilkan daftar Inventori
+       yang dipinjam oleh user
+    */
     protected void pengembalian(String userid){
         Scanner kembalikan = new Scanner(System.in);
         Read baca = new Read();

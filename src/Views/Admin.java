@@ -7,6 +7,14 @@ import DB.*;
 
 public class Admin extends Menu {
     
+
+    /**
+       Method dibawah untuk menampilkan menu
+       jika user adalah Admin, didalamnya ada
+       6 menu yaitu: Manage User, Manage Buku,
+       Lihat Buku, Pinjam Buku, Kembalikan Buku,
+       dan Logout
+    */
     public void menuAdmin(String id, String name){
         Scanner menu = new Scanner(System.in);
         Read baca = new Read();
@@ -62,10 +70,17 @@ public class Admin extends Menu {
 
     }
 
+
+    /**
+       Method dibawah untuk menampilkan menu
+       Manage User, didalamnya ada 5 menu yaitu:
+       Tambah User, Lihat User, Edit User, Hapus User,
+       dan Kembali. Menu ini hanya tersedia untuk role
+       Admin saja
+    */
     protected void manageUsers(){
         Scanner inputan = new Scanner(System.in);
         Read fetch = new Read();
-        // Print prnt = new Print();
 
         String id, username, password, nama_lengkap, progdi, role;
 
@@ -96,7 +111,6 @@ public class Admin extends Menu {
                     System.out.println("Masukkan Role: \n(admin, staff, user)");
                     role = inputan.nextLine();
 
-
                     tambahUsr.tambahUser(username, nama_lengkap, progdi, role, password);
                     System.out.println("User " + username + " berhasil ditambahkan\n");
                     sleep(1);
@@ -114,8 +128,6 @@ public class Admin extends Menu {
 
             case "2":
                 super.clearConsole();
-                // System.out.println("Menu Lihat User");
-                // NANTI BISA DI SORT BY PARAMETER
                 System.out.println("DAFTAR PENGGUNA PERPUSTAKAAN");
                 System.out.println("1. Ambil Semua Data\n2. Ambil Data sesuai Prodi\n3. Ambil Data sesuai Role");
                 System.out.println("Masukkan pilihan anda: ");
@@ -261,6 +273,13 @@ public class Admin extends Menu {
 
     }
     
+    /**
+       Method dibawah untuk menampilkan menu
+       Manage Buku, didalamnya ada 5 menu yaitu:
+       Tambah Buku, Lihat Buku, Edit Buku, Hapus Buku,
+       dan Kembali. Menu ini hanya tersedia untuk role
+       Admin dan Staff
+    */
     protected void manageBuku(){
         Scanner inputan = new Scanner(System.in);
         Read baca = new Read();
@@ -300,8 +319,6 @@ public class Admin extends Menu {
                 sleep(3);
                 super.clearConsole();
                 manageBuku();
-                
-
                 break;
 
             case "2":
@@ -415,6 +432,12 @@ public class Admin extends Menu {
 
     }
 
+    /**
+       Method dibawah untuk menampilkan menu
+       Peminjaman buku, dimana method ini akan
+       meminta input dari user berupa ID buku.
+       sebelumnya akan ditampilkan daftar buku
+    */
     protected void peminjaman(String userid){
         Scanner pinjam = new Scanner(System.in);
         Read baca = new Read();
@@ -426,10 +449,16 @@ public class Admin extends Menu {
         String bukuid = pinjam.nextLine();
 
         tambah.tambahInventori(userid, bukuid);
-
-
     }
 
+
+    /**
+       Method dibawah untuk menampilkan menu
+       Pengembalian buku, dimana method ini akan
+       meminta input dari user berupa ID Inventori.
+       sebelumnya akan ditampilkan daftar Inventori
+       yang dipinjam oleh user
+    */
     protected void pengembalian(String userid){
         Scanner kembalikan = new Scanner(System.in);
         Read baca = new Read();

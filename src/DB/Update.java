@@ -12,7 +12,12 @@ public class Update extends Conn {
     String USER = getConfig()[1];
     String PASS = getConfig()[2];
 
-    // Method untuk mengupdate data user
+    /**
+       Method dibawah untuk mengupdate data user
+       dengan parameter param, id, dan value_baru
+       dimana param adalah kolom dari table yang
+       akan di update
+    */
     public void updateUser(String param, String id, String value_baru){
         Read byId = new Read();
         String QUERY = "UPDATE `users` SET `"+ param +"` = ? WHERE `users`.`id` = ?;";
@@ -32,7 +37,10 @@ public class Update extends Conn {
         }
     }
 
-    // Method untuk mengupdate password user
+    /**
+       Method dibawah untuk mengupdate password user
+       dengan parameter id dan password_baru
+    */
     public void updatePassword(String id, String password_baru){
         Autentikasi auth = new Autentikasi();
         String passwordBaruEncrptd = auth.getMd5(password_baru);
@@ -52,7 +60,10 @@ public class Update extends Conn {
         }
     }
 
-    // Method untuk mengupdate data Program Studi
+    /**
+       Method dibawah untuk mengupdate data program studi
+       user dengan parameter id dan progdi_baru
+    */
     public void updateProgdi(String id, String progdi_baru){
         Read byId = new Read();
         String QUERY = "UPDATE `users` SET `progdi` = ? WHERE `users`.`id` = ?;";
@@ -74,7 +85,10 @@ public class Update extends Conn {
         }
     }
 
-    // Method untuk mengupdate data Role
+    /**
+       Method dibawah untuk mengupdate role user
+       dengan parameter id dan role_baru
+    */
     public void updateRole(String id, String role_baru){
         Read byId = new Read();
         String QUERY = "UPDATE `users` SET `role` = ? WHERE `users`.`id` = ?;";
@@ -97,7 +111,12 @@ public class Update extends Conn {
     }
 
 
-    // Method untuk mengupdate Judul
+    /**
+       Method dibawah untuk mengupdate Buku di katalog
+       dengan parameter param, id, dan value_baru
+       dimana param adalah kolom dari table yang
+       akan di update
+    */
     public void updateBuku(String param, String id, String value_baru){
         // Read byId = new Read();
         String QUERY = "UPDATE `katalog` SET `" + param + "` = ? WHERE `katalog`.`id` = ?;";
@@ -115,10 +134,6 @@ public class Update extends Conn {
             e.printStackTrace();
         }
     }
-
-
-
-
 
 
 }

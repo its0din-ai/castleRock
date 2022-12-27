@@ -5,6 +5,16 @@ import java.io.IOException;
 
 public class Menu extends App {
 
+    /**
+       Method dibawah untuk menghapus / mereset terminal
+       seperti semula (command: clear). Method ini akan
+       menggunakan package System untuk mendapatkan informasi
+       tentang nama OS, jika terdapat windows, maka akan
+       menggunakan ProccessBuilder untuk menjalankan command
+       'clear' di windows. Jika nama os tidak terdapat Windows
+       maka akan menggunakan escape sequence (kode ASCII) untuk
+       menghapus terminal '\033\143'
+    */
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -18,7 +28,15 @@ public class Menu extends App {
         }
     }
 
-    // Method untuk sleep
+    /**
+       Method dibawah untuk melakukan Freeze pada program
+       seperti halnya time.sleep() pada Python. Dengan
+       menggunakan Thread, dan method sleep, maka program
+       akan berhenti selama beberapa detik sesuai dengan
+       parameter yang diberikan. Parameter secara default
+       adalah milidetik, dan tinggal dikalikan dengan 1000
+       agar menjadi detik
+    */
     public static void sleep(double rawDetik){
         try {
             int detik = (int) (rawDetik * 1000);
@@ -28,6 +46,12 @@ public class Menu extends App {
         }
     }
 
+
+    /**
+       Method hanya digunakan untuk menampilkan Banner
+       awal, yaitu sebuah Ascii Art dengan tulisan
+       CastleRock
+    */
     public static void bannerAwal(){
         
         System.out.println("   ▄████▄   ▄▄▄        ██████ ▄▄▄█████▓ ██▓    ▓█████  ██▀███   ▒█████   ▄████▄   ██ ▄█▀\n  ▒██▀ ▀█  ▒████▄    ▒██    ▒ ▓  ██▒ ▓▒▓██▒    ▓█   ▀ ▓██ ▒ ██▒▒██▒  ██▒▒██▀ ▀█   ██▄█▒ \n  ▒▓█    ▄ ▒██  ▀█▄  ░ ▓██▄   ▒ ▓██░ ▒░▒██░    ▒███   ▓██ ░▄█ ▒▒██░  ██▒▒▓█    ▄ ▓███▄░ \n  ▒▓▓▄ ▄██▒░██▄▄▄▄██   ▒   ██▒░ ▓██▓ ░ ▒██░    ▒▓█  ▄ ▒██▀▀█▄  ▒██   ██░▒▓▓▄ ▄██▒▓██ █▄ \n  ▒ ▓███▀ ░ ▓█   ▓██▒▒██████▒▒  ▒██▒ ░ ░██████▒░▒████▒░██▓ ▒██▒░ ████▓▒░▒ ▓███▀ ░▒██▒ █▄\n  ░ ░▒ ▒  ░ ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░  ▒ ░░   ░ ▒░▓  ░░░ ▒░ ░░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ░▒ ▒  ░▒ ▒▒ ▓▒\n    ░  ▒     ▒   ▒▒ ░░ ░▒  ░ ░    ░    ░ ░ ▒  ░ ░ ░  ░  ░▒ ░ ▒░  ░ ▒ ▒░   ░  ▒   ░ ░▒ ▒░\n  ░          ░   ▒   ░  ░  ░    ░        ░ ░      ░     ░░   ░ ░ ░ ░ ▒  ░        ░ ░░ ░ \n  ░ ░            ░  ░      ░               ░  ░   ░  ░   ░         ░ ░  ░ ░      ░  ░   \n  ░                                                                     ░               ");
@@ -35,6 +59,10 @@ public class Menu extends App {
         System.out.println("==========================================================================================");
     }
 
+    /**
+       Tiga method dibawah adalah method yang dipakai
+       untuk Overriding pada Kelas Admin, Staff, dan Users
+    */
     public void menuAdmin(String id, String name){
         System.out.println("Halo " + name + "!");
     }
@@ -46,6 +74,11 @@ public class Menu extends App {
     }
 
 
+    /**
+       Method hanya digunakan untuk menampilkan Banner
+       Logout, yaitu sebuah Informasi bahwa user telah
+       logout dan informasi tentang versi program
+    */
     public static void bannerLogout(){
         System.out.println("==========================================");
         System.out.println("              Anda telah logout           ");

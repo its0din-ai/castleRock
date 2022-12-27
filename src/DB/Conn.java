@@ -21,8 +21,9 @@ public class Conn {
        Method untuk membaca file config.xml dan mengembalikan
        nilai url, username, dan password yang nantinya akan
        digunakan untuk login ke mysql menggunakan JDBC
+       (Setter)
     */
-    private String[] securedCreds() throws ParserConfigurationException, SAXException, IOException {
+    private String[] setDBAkun() throws ParserConfigurationException, SAXException, IOException {
         InputStream configFile = getClass().getClassLoader().getResourceAsStream("config/config.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -42,11 +43,11 @@ public class Conn {
     /**
        Menggunakan konsep Encapsulation agar data config.xml
        tidak bisa diakses secara langsung dari luar class
-       dan akan menjadi lebih aman
+       dan akan menjadi lebih aman (Getter)
     */
     public String[] getConfig() {
         try {
-            securedCreds();
+            setDBAkun();
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }

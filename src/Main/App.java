@@ -9,14 +9,13 @@ public class App {
 
     /** Main Method hanya akan memanggil method login() dan mainMenu()
         untuk menampilkan halaman login dan menu utama. Sisanya akan dihandle
-        oleh method-method yang dipanggil oleh method-method tersebut dengan 
-        menggunakan Switch-Case. 
+        oleh method-method yang dipanggil oleh kedua method tersebut dengan 
+        menggunakan Switch-Case
     */
     public static void main(String[] args) throws Exception {
         login();
         mainMenu(users);
     }
-
 
     /** Method dibawah ini digunakan untuk menampilkan halaman login,
         dan melakukan autentikasi user. Jika user berhasil login,
@@ -47,7 +46,7 @@ public class App {
             case "staff":
                 Staff menuStaff = new Staff();
                 Menu.clearConsole();
-                menuStaff.menuStaff(users[2], users[3]);
+                menuStaff.menuStaff(users[0], users[2]);
                 break;
             case "user":
                 Users menuUser = new Users();

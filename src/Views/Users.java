@@ -8,6 +8,12 @@ import Auth.*;
 
 public class Users extends Menu {
     
+    /**
+       Method dibawah untuk menampilkan menu
+       jika user adalah User biasa, didalamnya
+       ada 5 menu yaitu: Lihat Buku, Pinjam Buku,
+       Kembalikan Buku, Ganti Password dan Logout
+    */
     public void menuUser(String id, String username, String name, String prodi){
         Scanner inptn = new Scanner(System.in);
 
@@ -40,7 +46,7 @@ public class Users extends Menu {
             case "4":
                 System.out.println("Ganti Password");
                 gantiPasswordUser(id, username);
-
+                Menu.sleep(2);
                 super.mainMenu(App.users);
                 break;
             case "5":
@@ -55,6 +61,16 @@ public class Users extends Menu {
 
     }
 
+    /**
+       Method ini digunakan jika user memilih menu
+       Ganti Password. pertama method akan meminta
+       user untuk memasukkan password lama yang akan
+       dienkripsi ke MD5, dan kemudian membandingkan
+       dengan password di database yang telah terEnkripsi
+       dengan MD5. Jika password sama, maka user akan
+       diminta untuk memasukkan password baru yang akan
+       dienkripsi ke MD5 dan dimasukkan ke database.
+    */
     private void gantiPasswordUser(String id, String usrnm){
         Read baca = new Read();
         Update updtr = new Update();
@@ -79,6 +95,12 @@ public class Users extends Menu {
 
     }
    
+    /**
+       Method dibawah untuk menampilkan menu
+       Peminjaman buku, dimana method ini akan
+       meminta input dari user berupa ID buku.
+       sebelumnya akan ditampilkan daftar buku
+    */
     protected void peminjaman(String userid){
         Scanner pinjam = new Scanner(System.in);
         Read baca = new Read();
@@ -94,6 +116,13 @@ public class Users extends Menu {
 
     }
 
+    /**
+       Method dibawah untuk menampilkan menu
+       Pengembalian buku, dimana method ini akan
+       meminta input dari user berupa ID Inventori.
+       sebelumnya akan ditampilkan daftar Inventori
+       yang dipinjam oleh user
+    */
     protected void pengembalian(String userid){
         Scanner kembalikan = new Scanner(System.in);
         Read baca = new Read();
