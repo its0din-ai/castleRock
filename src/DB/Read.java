@@ -155,7 +155,6 @@ public class Read extends Conn {
         Statement statement = connct.createStatement();
         ResultSet hasilKueri = statement.executeQuery(getKatalog);){
                 while(hasilKueri.next()){
-                    int tersedia = hasilKueri.getInt("max_buku") - hasilKueri.getInt("dipinjam");
 
                     System.out.println("-----------------------------------------------------------------------------------------------------------------");
                     System.out.println("[*] ID Buku              :: " + hasilKueri.getInt("id"));
@@ -164,7 +163,7 @@ public class Read extends Conn {
                     System.out.println("[*] Bahasa               :: " + hasilKueri.getString("bahasa"));
                     System.out.println("[*] Pengarang Buku       :: " + hasilKueri.getString("nama_pengarang"));
                     System.out.println("[*] Tahun Terbit Buku    :: " + hasilKueri.getInt("tahun_terbit"));
-                    System.out.println("[*] Jumlah Tersedia      :: " + tersedia + " Buku");
+                    
                 }
                 System.out.println("-----------------------------------------------------------------------------------------------------------------");
             }
@@ -216,7 +215,6 @@ public class Read extends Conn {
             
             ResultSet hasilKueri = statement.executeQuery();
             while(hasilKueri.next()){
-                int tersedia = hasilKueri.getInt("max_buku") - hasilKueri.getInt("dipinjam");
 
                 System.out.println("-----------------------------------------------------------------------------------------------------------------");
                 System.out.println("[*] ID Buku              :: " + hasilKueri.getInt("id"));
@@ -225,7 +223,7 @@ public class Read extends Conn {
                 System.out.println("[*] Bahasa               :: " + hasilKueri.getString("bahasa"));
                 System.out.println("[*] Pengarang Buku       :: " + hasilKueri.getString("nama_pengarang"));
                 System.out.println("[*] Tahun Terbit Buku    :: " + hasilKueri.getInt("tahun_terbit"));
-                System.out.println("[*] Jumlah Tersedia      :: " + tersedia + " Buku");
+                
             }
             System.out.println("-----------------------------------------------------------------------------------------------------------------");
         } catch(SQLException e){

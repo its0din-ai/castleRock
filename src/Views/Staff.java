@@ -36,6 +36,7 @@ public class Staff extends Menu {
                 baca.bacaDatabaseBuku();
                 System.out.println("Tekan Enter untuk kembali ke menu");
                 inputPilihan = menu.nextLine();
+                super.clearConsole();
                 super.mainMenu(App.users);
                 break;
             case "3":
@@ -77,7 +78,7 @@ public class Staff extends Menu {
         // Read fetch = new Read();
 
         String id, kategori, judul, bahasa, pengarang;
-        int tahun, maxBuku, sisaBuku;
+        int tahun;
 
         System.out.println("Menu Manage Buku");
         System.out.println("1. Tambah Buku\n2. Lihat Buku\n3. Edit Buku\n4. Hapus Buku\n5. Kembali");
@@ -101,12 +102,10 @@ public class Staff extends Menu {
                 pengarang = inputan.nextLine();
                 System.out.println("Masukkan Tahun Terbit: ");
                 tahun = inputan.nextInt();
-                System.out.println("Masukkan Jumlah Buku: ");
-                maxBuku = inputan.nextInt();
-                tambahBuku.tambahBuku(kategori, judul, bahasa, pengarang, tahun, maxBuku);
+                
+                tambahBuku.tambahBuku(kategori, judul, bahasa, pengarang, tahun);
                 System.out.println("Buku " + judul + " berhasil ditambahkan\n");
-                sisaBuku = maxBuku - 2;
-                System.out.println("[DEBUG] Sisa Buku :: " + sisaBuku);
+                
                 sleep(3);
                 super.clearConsole();
                 manageBuku();
@@ -119,6 +118,7 @@ public class Staff extends Menu {
                 baca.bacaDatabaseBuku();
                 System.out.println("Tekan Enter untuk kembali ke menu Manage Buku");
                 inputPilihan = inputan.nextLine();
+                super.clearConsole();
                 manageBuku();
                 break;
 

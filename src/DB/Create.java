@@ -51,9 +51,9 @@ public class Create extends Conn {
        Setelah itu akan melakukan QUERY INSERT ke database dengan parameterBinding
        agar lebih aman dari SQL Injection
     */
-    public void tambahBuku(String kategori, String judul, String bahasa, String pengarang, int tahun, int maxBuku){
+    public void tambahBuku(String kategori, String judul, String bahasa, String pengarang, int tahun){
         
-        String QUERY = "INSERT INTO `katalog` (`id`, `kategori`, `judul_buku`, `bahasa`, `nama_pengarang`, `tahun_terbit`, `max_buku`) VALUES (NULL, ?, ?, ?, ?, ?, ?);";
+        String QUERY = "INSERT INTO `katalog` (`id`, `kategori`, `judul_buku`, `bahasa`, `nama_pengarang`, `tahun_terbit`) VALUES (NULL, ?, ?, ?, ?, ?);";
 
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement statement = connct.prepareStatement(QUERY);)
@@ -63,7 +63,6 @@ public class Create extends Conn {
             statement.setString(3, bahasa);
             statement.setString(4, pengarang);
             statement.setInt(5, tahun);
-            statement.setInt(6, maxBuku);
             
             System.out.println("SEDANG MENULIS DATA KEDALAM DB");
             statement.executeUpdate();

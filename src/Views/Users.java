@@ -31,6 +31,7 @@ public class Users extends Menu {
                 baca.bacaDatabaseBuku();
                 System.out.println("Tekan Enter untuk kembali ke menu");
                 inputan = inptn.nextLine();
+                super.clearConsole();
                 super.mainMenu(App.users);
                 break;
             case "2":
