@@ -83,7 +83,7 @@ public class Menu extends App {
         System.out.println("==========================================");
         System.out.println("              Anda telah logout           ");
         System.out.println("==========================================");
-        System.out.println("                ver.1.1-beta              ");
+        System.out.println("                ver.1.2-final             ");
         System.out.println("------------------------------------------");
     }
 
