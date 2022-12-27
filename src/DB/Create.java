@@ -12,7 +12,14 @@ public class Create extends Conn {
     String USER = getConfig()[1];
     String PASS = getConfig()[2];
 
-    // Method untuk menambahkan data user
+    /**
+       Method ini akan menambahkan data user baru kedalam database
+       dengan parameter username, nama_lengkap, progdi, role, dan password.
+       Password akan dienkripsi terlebih dahulu sebelum disimpan kedalam database
+       dengan menggunakan method getMD5() yang tadi sudah dibuat.
+       Setelah itu akan melakukan QUERY INSERT ke database dengan parameterBinding
+       agar lebih aman dari SQL Injection
+    */
     public void tambahUser(String username, String nama_lengkap, String progdi, String role, String password){
         Autentikasi auth = new Autentikasi();
         String passwordEncrptd = auth.getMd5(password);
@@ -37,6 +44,13 @@ public class Create extends Conn {
     
     }
 
+
+    /**
+       Method ini akan menambahkan data Buku baru kedalam database
+       dengan parameter kategori, judul, bahasa, pengarang, tahun, dan maxBuku.
+       Setelah itu akan melakukan QUERY INSERT ke database dengan parameterBinding
+       agar lebih aman dari SQL Injection
+    */
     public void tambahBuku(String kategori, String judul, String bahasa, String pengarang, int tahun, int maxBuku){
         
         String QUERY = "INSERT INTO `katalog` (`id`, `kategori`, `judul_buku`, `bahasa`, `nama_pengarang`, `tahun_terbit`, `max_buku`) VALUES (NULL, ?, ?, ?, ?, ?, ?);";
@@ -59,7 +73,11 @@ public class Create extends Conn {
         }
     }
 
-    // pinjam buku
+
+    /**
+       Method ini akan menambahkan data peminjaman buku ke database
+       dengan parameter userID, dan bukuID
+    */
     public void tambahInventori(String userID, String bukuID){
         String QUERY = "INSERT INTO `inventory` (`id_inventory`, `id_user`, `id_buku`) VALUES (NULL, ?, ?);";
 

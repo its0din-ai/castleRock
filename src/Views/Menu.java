@@ -35,11 +35,22 @@ public class Menu extends App {
         System.out.println("==========================================================================================");
     }
 
+    public void menuAdmin(String id, String name){
+        System.out.println("Halo " + name + "!");
+    }
+    public void menuStaff(String id, String name){
+        System.out.println("Halo " + name + "!");
+    }
+    public void menuUser(String id, String username, String name, String prodi){
+        System.out.println("Halo " + name + "!");
+    }
+
+
     public static void bannerLogout(){
         System.out.println("==========================================");
         System.out.println("              Anda telah logout           ");
         System.out.println("==========================================");
-        System.out.println("                ver.1.0-beta              ");
+        System.out.println("                ver.1.1-beta              ");
         System.out.println("------------------------------------------");
     }
 

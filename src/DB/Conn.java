@@ -14,9 +14,14 @@ import org.xml.sax.SAXException;
 
 public class Conn {
     
+    private String[] secureConfig = new String[3];
     String[] dbConfig = new String[3];
-    String[] secureConfig = new String[3];
 
+    /**
+       Method untuk membaca file config.xml dan mengembalikan
+       nilai url, username, dan password yang nantinya akan
+       digunakan untuk login ke mysql menggunakan JDBC
+    */
     private String[] securedCreds() throws ParserConfigurationException, SAXException, IOException {
         InputStream configFile = getClass().getClassLoader().getResourceAsStream("config/config.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -34,6 +39,11 @@ public class Conn {
         return secureConfig;
     }
 
+    /**
+       Menggunakan konsep Encapsulation agar data config.xml
+       tidak bisa diakses secara langsung dari luar class
+       dan akan menjadi lebih aman
+    */
     public String[] getConfig() {
         try {
             securedCreds();
@@ -46,4 +56,6 @@ public class Conn {
         dbConfig[2] = secureConfig[2];
         return dbConfig;
     }
+
+
 }

@@ -12,6 +12,18 @@ public class Read extends Conn {
     String USER = getConfig()[1];
     String PASS = getConfig()[2];
 
+    // Method untuk format Tanggal
+    public String modulLocale(String tanggal){
+        Locale localeID = new Locale("id", "ID");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy", localeID);
+        java.sql.Date tanggalSql = java.sql.Date.valueOf(tanggal);  
+
+        Date tgl = new Date(tanggalSql.getTime());
+        String tanggalIndonesia = sdf.format(tgl);
+
+        return tanggalIndonesia;
+    }
+
     // Method untuk membaca data user berdasarkan username
     public String[] bacaUser(String username) {
         String[] usr = new String[6];
@@ -57,7 +69,6 @@ public class Read extends Conn {
 
         System.out.format("+------+------------------------------+------------------------------------+---------------------------+--------------+%n");
     }
-
 
     // Method untuk mencetak List User berdasarkan parameter dan value tertentu
     public void fetchUserBy(String param, String value){
@@ -106,7 +117,6 @@ public class Read extends Conn {
         return null;
     }
     
-
     // Method untuk membaca database buku yang ada di katalog
     public void bacaDatabaseBuku(){
         String getKatalog = "SELECT * FROM katalog";
@@ -153,7 +163,7 @@ public class Read extends Conn {
         return null;
     }
 
-
+    // Method untuk mencetak List Buku berdasarkan parameter dan value tertentu
     public void printBukuBy(String param, String value){
         // String result;
         
@@ -181,21 +191,6 @@ public class Read extends Conn {
             e.printStackTrace();
         }
     }
-
-
-    // ntar dipindah
-    public String modulLocale(String tanggal){
-        Locale localeID = new Locale("id", "ID");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy", localeID);
-        java.sql.Date tanggalSql = java.sql.Date.valueOf(tanggal);  
-
-        Date tgl = new Date(tanggalSql.getTime());
-        String tanggalIndonesia = sdf.format(tgl);
-
-        return tanggalIndonesia;
-    }
-
-
 
     // Baca Inventori
     public void printInventory(String user_id){
@@ -240,7 +235,6 @@ public class Read extends Conn {
             e.printStackTrace();
         }
     }
-
 
 
 }

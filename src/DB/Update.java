@@ -99,7 +99,7 @@ public class Update extends Conn {
 
     // Method untuk mengupdate Judul
     public void updateBuku(String param, String id, String value_baru){
-        Read byId = new Read();
+        // Read byId = new Read();
         String QUERY = "UPDATE `katalog` SET `" + param + "` = ? WHERE `katalog`.`id` = ?;";
     
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -107,13 +107,10 @@ public class Update extends Conn {
         {
             statement.setString(1, value_baru);
             statement.setString(2, id);
-            
             statement.executeUpdate();
             
             Menu.clearConsole();
-            // System.out.println("Judul Buku berhasil di update, berikut hasilnya");
-            // byId.printBukuBy("id", id);
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

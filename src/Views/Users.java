@@ -7,6 +7,7 @@ import Main.App;
 import Auth.*;
 
 public class Users extends Menu {
+    
     public void menuUser(String id, String username, String name, String prodi){
         Scanner inptn = new Scanner(System.in);
 
