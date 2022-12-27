@@ -3,3 +3,4 @@ info.txt
 *.code-workspace
 config/*
 *.env
+export/*
