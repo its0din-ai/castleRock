@@ -34,9 +34,9 @@ public class Conn {
         String url = urlNodes.item(0).getTextContent();
         String username = usernameNodes.item(0).getTextContent();
         String password = passwordNodes.item(0).getTextContent();
-        secureConfig[0] = url;
-        secureConfig[1] = username;
-        secureConfig[2] = password;
+        this.secureConfig[0] = url;
+        this.secureConfig[1] = username;
+        this.secureConfig[2] = password;
         return secureConfig;
     }
 
@@ -52,9 +52,9 @@ public class Conn {
             e.printStackTrace();
         }
 
-        dbConfig[0] = secureConfig[0];
-        dbConfig[1] = secureConfig[1];
-        dbConfig[2] = secureConfig[2];
+        this.dbConfig[0] = secureConfig[0];
+        this.dbConfig[1] = secureConfig[1];
+        this.dbConfig[2] = secureConfig[2];
         return dbConfig;
     }
 

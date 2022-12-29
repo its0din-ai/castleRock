@@ -19,7 +19,6 @@ public class Update extends Conn {
        akan di update
     */
     public void updateUser(String param, String id, String value_baru){
-        Read byId = new Read();
         String QUERY = "UPDATE `users` SET `"+ param +"` = ? WHERE `users`.`id` = ?;";
     
         try(Connection connct = DriverManager.getConnection(DB_URL, USER, PASS);

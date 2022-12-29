@@ -26,15 +26,16 @@ public class App {
     protected static String[] users = new String[5];
     private static void login() throws IOException {
         Autentikasi authDev = new Autentikasi();
-        users = authDev.Login();
+        users = authDev.sistemLogin();
     }
 
-    /** Method dibawah ini digunakan untuk menampilkan menu utama
-        sesuai dengan role user yang login. Method ini akan memanggil
-        method-method yang ada di class-class yang berbeda sesuai dengan
-        role user yang login. method juga membutuhkan parameter dari data
-        users[] yang dihasilkan oleh method login() yang nantinya akan
-        digunakan untuk menampilkan data user yang login.
+    /** Method dibawah ini akan membuat obyek dari user role
+        yang login, dan akan menampilkan menu utama dari role tersebut
+        Method ini akan memanggil method-method yang ada di class-class
+        yang berbeda sesuai dengan role user yang login.
+        method juga membutuhkan parameter dari data users[] yang dihasilkan
+        oleh method login() yang nantinya akan digunakan untuk
+        menampilkan data user yang login.
     */
     protected static void mainMenu(String[] users){
         switch(users[4]){

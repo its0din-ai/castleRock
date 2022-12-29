@@ -29,11 +29,11 @@ public class Autentikasi {
        jumlah percobaan login yang tersisa, dan jika percobaan login sudah
        habis, maka akan keluar dari program.
     */
-    public String[] Login() throws IOException {
+    public String[] sistemLogin() throws IOException {
         Scanner usrnm = new Scanner(System.in);
         Read bacaUsr = new Read();
 
-        String[] objUser = new String[4];
+        String[] objUser = new String[5];
         int coba = 3;
         
         while(coba > 0){
